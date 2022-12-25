@@ -1,0 +1,112 @@
+{% include 'webapp/links.html' %}
+
+{% load static %}
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <h1 class="logo"><a href="">GoJo Afalagi</a></h1>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="">Home</a></li>
+          <li class="dropdown"><a href="rentals"><span>Rentals</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="apartment">Apartment</a></li>
+              <li><a href="house">House</a></li>
+              <li><a href="rooms">Rooms</a></li>
+              <li><a href="condominium">Condominium</a></li>
+              <li><a href="amenities">Amenities</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="about">About</a></li>
+          <li><a class="nav-link scrollto o" href="profile">Profile</a></li>
+          <li><a class="nav-link scrollto" href="contact">Contact</a></li>
+          <li><a class="getstarted scrollto" href="signin">SignIn</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+      <!-- Navigation bar -->
+
+    </div>
+  </header>
+  <br>
+  <br>
+  <br>
+  <!-- End Header -->
+
+  {% block content %}
+
+  {% endblock %}
+
+  <br>
+  <!-- ==== Footer start ==== -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>GoJo Afalagi</h3>
+            <p>
+              Catholic <br>
+              Bahirdar, Kebele 13<br>
+              Ethiopia <br><br>
+              <strong>Phone:</strong> +251975325354<br>
+              <strong>Email:</strong> ezkielmisgae@gmailcom<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Rentals</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Profile</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">House Rent</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">House Rent</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">House Rent</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Special Thank</h4>
+            <p>For the whole AlX and Holberton team for creating this course for free.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        <a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+</body>
+
+</html>

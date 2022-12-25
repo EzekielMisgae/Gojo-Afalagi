@@ -1,0 +1,89 @@
+{% extends 'accounts/headerFooter.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Ezekiel Alene</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Sora:wght@700&family=Work+Sans:ital,wght@0,400;0,700;1,600&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/brands.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/solid.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/@fortawesome/fontawesome-free@6.2.0/css/fontawesome.min.css">
+</head>
+
+<body>
+    <section>
+        <section class="bio">
+            <img class="profile-img" src="{% static '/images/profile.png' %}" />
+            <div class="firstdescription">
+                <h2>Hello!</h2>
+                <h3>I'm Ezekiel Alene. I’m a freelance web developer.</h3>
+                <p>
+                    I’ve been coding and making data visualization projects since 2016. I have experience and
+                    interest in web design (HTML, CSS & JS), programming (Python), and Natural Language
+                    Processing. In my free time I enjoy gardening, roller skating, and playing bass guitar.
+                </p>
+                <a class="btn" href="https://github.com/EzekielMisgae">See my work</a>
+            </div>
+            <h2>Recent Work</h2>
+            <article>
+                <div>
+                    <h3>Text Message Analysis</h3>
+                    <p>Measuring sentiment in real-world SMS data.</p>
+                    <strong>Feb 2022</strong>
+                    <ul>
+                        <li>Imported large, complex datasets for text preprocessing</li>
+                        <li>Analyzed data for positive and negative sentiment using Language Parsing, Word
+                            Vectorization,
+                            and Topic Modeling</li>
+                        <li>Generated visualizations from results</li>
+                    </ul>
+                    <a href="https://github.com/EzekielMisgae">GitHub Repo</a>
+                </div>
+                <img class="article-img"
+                    src="https://static-assets.codecademy.com/assets/livestreams/national_coding_week/phone.png" />
+            </article>
+            <article>
+                <div>
+                    <h3>Biodiversity in National Parks</h3>
+                    <p>Data analysis on the conservation statuses of various endangered species living in national
+                        parks.
+                    </p>
+                    <strong>May 2021</strong>
+                    <ul>
+                        <li>Analyzed, cleaned, then plotted data using Matplotlib</li>
+                        <li>Searched for patterns or themes in data</li>
+                        <li>Used Jupyter Notebook to communicate findings and conservation recommendations</li>
+                    </ul>
+                    <a href="#">GitHub Repo</a>
+                </div>
+                <video class='article-img' controls>
+                    <source src='https://static-assets.codecademy.com/assets/livestreams/national_coding_week/park.mp4'>
+                </video>
+            </article>
+            <article>
+                <div>
+                    <h3>Caption Contest</h3>
+                    <p>A platform that allows users to participate in photo caption contests.</p>
+                    <strong>Jan 2021</strong>
+                    <ul>
+                        <li>Created the back end for a platform where users can submit captions</li>
+                        <li>Implemented security best practices to authenticate and authorize users</li>
+                        <li>Created a cache to store frequently requested data</li>
+                    </ul>
+                    <a href="#">GitHub Repo</a>
+                </div>
+                <img class="article-img"src="https://static-assets.codecademy.com/assets/livestreams/national_coding_week/dog.png" />
+            </article>
+        </section>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>City</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
+                {% for i in houses %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.houseType}}</td>
+                    <td>{{i.price}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>

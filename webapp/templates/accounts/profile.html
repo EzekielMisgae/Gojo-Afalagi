@@ -1,0 +1,36 @@
+{% extends 'accounts/headerFooter.html' %}
+{% block content %}
+<br>
+<br>
+    <div class="row">
+        <div class="col-md">
+            <div>
+                <h4>Profile</h4>
+            </div>
+            <div class="card card-body">
+                <table class="table">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Date of Creation</th>
+                    </tr>
+                    {% for i in customer %}
+                    <tr>
+                        <td>{{i.firstName}}</td>
+                        <td>{{i.lastName}}</td>
+                        <td>{{i.phoneNum}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.renter}}</td>
+                        <td>{{i.dateCreated}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}
