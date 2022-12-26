@@ -8,7 +8,7 @@ from django.conf import settings
 
 urlpatterns = [
     #signing in possible urls
-    path('', views.homepage),
+    path('', views.homepage, name='landing'),
 
     #homepage possible urls
     path('signin/', views.signin, name='signin'),
@@ -20,7 +20,7 @@ urlpatterns = [
     path('sign-up/', views.register),
 
     #Full access after register/signin possible urls
-    # path('dashboard/', views.dashboard),
+    # path('allhouse/', views.allHouse),
     path('rentals/', views.rentals),
     # path('about/', views.about),
     # path('customer/<str:idKey>/', views.customer),

@@ -9,12 +9,10 @@ def signin(request):
     return render(request, 'accounts/first/signin.html', {'signin':signin})
 
 def homepage(request):    
-    return render(request, 'accounts/index.html', {})
+    return render(request, 'accounts/first/landing.html', {})
 
 def home(request):
-    message = "Example Django project on vercel"
-    return HttpResponse(message)
-
+    return render(request, 'accounts/index.html', {})
 
 def register(request):
     if request.method == 'POST':
@@ -39,4 +37,4 @@ def register(request):
 
 def rentals(request):
     rentals = House.objects.all()
-    return render(request, 'accounts/rentals.html', {'rentals':rentals})
+    return render(request, 'accounts/allHouse.html', {'rentals':rentals})
