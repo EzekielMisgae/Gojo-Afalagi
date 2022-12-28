@@ -2,49 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Customer(models.Model):
-    SEX = (
-        ('Male', 'Male'),
-        ('Female', 'Female')
-    )
-    CUSTOMERTYPE = (
-        ('Owner', 'Owner'),
-        ('Renter', 'Renter')
-    )
-
-    firstName = models.CharField(max_length=100, null=True)
-    lastName = models.CharField(max_length=100, null=True)
-    sex = models.CharField(max_length=6, null=True, choices=SEX)
-    phoneNum = models.CharField(max_length=100, null=True)
-    email = models.CharField(max_length=100, null=True)
-    customer_type = models.CharField(max_length=100, null=True, choices=CUSTOMERTYPE)
-    dateCreated = models.DateTimeField(auto_now_add=True, null=True)
-
-    def __str__(self):
-       return self.firstName
-
-
-class houseTag(models.Model):
-    name = models.CharField(max_length=100, null=True)
-
-    def __str__(self):
-        return self.name
-
-
-class House(models.Model):
-
-    HOUSESTATUS = (
-        ('Available', 'Available'),
-        ('Rented', 'Rented')
-    )
-    HOUSETYPE = (
-        ('Apartment', 'Apartment'),
-        ('Compound', 'Compound'),
-        ('Room', 'Room'),
-        ('Condominium', 'Condominium'),
-        ('Luxury', 'Luxury')
-    )
-
+class User(models.Model):
     REGION = (
         ('AddisAbaba', 'AddisAbaba'),
         ('Afar', 'Afar'),
@@ -59,27 +17,97 @@ class House(models.Model):
         ('SNNPR', 'SNNPR'),
         ('Tigray', 'Tigray'),
     )
+    UserID = models.AutoField(primary_key=True,null=False)
+    Username = models.CharField(max_length=255,null=False)
+    Email = models.CharField(max_length=255,null=False)
+    Phone = models.CharField(max_length=11,null=True)
+    Password = models.CharField(max_length=255,null=False)
+    Kebele = models.IntegerField
+    KebeleID = models.CharField(max_length=10, null=True, default=0) 
+    Region = models.CharField(max_length=100, choices=REGION)
+    City = models.CharField(max_length=255,null=True)
+    Address = models.CharField(max_length=255,null=True)
+    Profile = models.FileField(upload_to='',null=True,default='') 
+    Login = models.BooleanField(null=False,default=False)
+    Job = models.CharField(max_length=255,null=True)
+    Introduction = models.TextField(null=True)
 
-    numRoom = models.IntegerField
-    kebele = models.IntegerField
-    city = models.CharField(max_length=100)
-    region = models.CharField(max_length=100, choices=REGION)
-    price = models.IntegerField(null=True)
-    houseType = models.CharField(max_length=100, choices=HOUSETYPE)
-    house_status = models.CharField(max_length=200, choices=HOUSESTATUS)
-    description = models.CharField(max_length=100, blank=True)
-    dateCreated = models.DateTimeField(auto_now_add=True)
-    photo = models.ImageField(default='default.png', blank=True)
+class Info(models.Model):
+    InfoID = models.AutoField(primary_key=True,null=False)
+    Datetime = models.DateTimeField(null=False)
+    UserID = models.IntegerField(null=False) 
+    KebeleID = models.IntegerField(null=True)
 
-    def __str__(self):
-        return self.houseType
+class House(models.Model):
+    REGION = (
+        ('AddisAbaba', 'AddisAbaba'),
+        ('Afar', 'Afar'),
+        ('Amhara', 'Amhara'),
+        ('Benishangul', 'Benishangul'),
+        ('DireDawa', 'DireDawa'),
+        ('Gambella', 'Gambella'),
+        ('Harari', 'Harari'),
+        ('Oromia', 'Oromia'),
+        ('Somali', 'Somali'),
+        ('SWEPR', 'SWEPR'),
+        ('SNNPR', 'SNNPR'),
+        ('Tigray', 'Tigray'),
+    )
+    HOUSESTATUS = (
+        ('Available', 'Available'),
+        ('Rented', 'Rented')
+    )
+    HOUSETYPE = (
+        ('Apartment', 'Apartment'),
+        ('Compound', 'Compound'),
+        ('Room', 'Room'),
+        ('Condominium', 'Condominium'),
+        ('Luxury', 'Luxury')
+    )
 
+    HouseID = models.AutoField(primary_key=True,null=False)
+    Housetype = models.CharField(max_length=255, choices=HOUSETYPE, null=True)
+    NumRoom = models.IntegerField
+    Kebele = models.IntegerField
+    Region = models.CharField(max_length=100, choices=REGION)
+    City = models.CharField(max_length=255,null=True)
+    Address = models.CharField(max_length=255,null=True)
+    Area = models.FloatField(null=True)
+    Price = models.IntegerField(null=True)
+    Floor = models.IntegerField(null=True)
+    LandlordName = models.CharField(max_length=255,null=True)
+    LandlordPhone = models.CharField(max_length=255, null=True)
+    Introduction = models.TextField(null=True, default="")
+    HouseStatus = models.CharField(max_length=200, choices=HOUSESTATUS)
 
-class Status(models.Model):
-    status = models.CharField(max_length=100, null=True)
-    customer = models.CharField(max_length=100, null=True)
-    House = models.CharField(max_length=100, null=True)
-    dateCreated = models.DateTimeField(auto_now_add=True, null=True)
+class Order(models.Model):
+    PAYOPTION = (
+        ('Cash', 'Cash'),
+        ('Telebirr', 'Telebirr'),
+        ('CBE birr', 'CBE birr'),
+        ('Bank', 'Bank'),
+        ('Other', 'Other'),
+    )
 
-    def __str__(self):
-        return self.status
+    OrderID = models.AutoField(primary_key=True,null=False)
+    OrderDate = models.DateTimeField(null=False)
+    DueDate = models.DateTimeField(null=False)
+    Price = models.IntegerField(null=False)
+    PaymentOption = models.BooleanField(null=False, choices=PAYOPTION)
+    UserID = models.IntegerField(null=False)
+    HouseID = models.IntegerField(null=False)
+    KebeleID = models.IntegerField(null=False)
+
+class Message(models.Model):
+    MessageID = models.AutoField(primary_key=True,null=False)
+    WorkID = models.IntegerField(null=True) 
+    Errornumber = models.IntegerField(null=True)
+    UserID = models.IntegerField(null=False)
+    Text = models.TextField(null=True)
+    Username = models.CharField(max_length=255,null=False)
+
+class Picture(models.Model):
+    PicID = models.AutoField(primary_key=True,null=False)
+    Pic = models.FileField(upload_to='',null=True,default='')
+    UserID = models.IntegerField(null=True)
+    HouseID = models.IntegerField(null=True)
