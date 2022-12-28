@@ -60,15 +60,15 @@ class House(models.Model):
         ('Tigray', 'Tigray'),
     )
 
-    numRoom = models.IntegerField(null=True)
-    kebele = models.IntegerField(null=True)
-    city = models.CharField(max_length=100, null=True)
-    region = models.CharField(max_length=100, null=True, choices=REGION)
+    numRoom = models.IntegerField
+    kebele = models.IntegerField
+    city = models.CharField(max_length=100)
+    region = models.CharField(max_length=100, choices=REGION)
     price = models.IntegerField(null=True)
-    houseType = models.CharField(max_length=100, null=True, choices=HOUSETYPE)
-    house_status = models.CharField(max_length=200, null=True, choices=HOUSESTATUS)
-    description = models.CharField(max_length=100, null=True, blank=True)
-    dateCreated = models.DateTimeField(auto_now_add=True, null=True)
+    houseType = models.CharField(max_length=100, choices=HOUSETYPE)
+    house_status = models.CharField(max_length=200, choices=HOUSESTATUS)
+    description = models.CharField(max_length=100, blank=True)
+    dateCreated = models.DateTimeField(auto_now_add=True)
     photo = models.ImageField(default='default.png', blank=True)
 
     def __str__(self):
