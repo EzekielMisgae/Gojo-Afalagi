@@ -40,11 +40,9 @@ class Info(models.Model):
 
 class House(models.Model):
     REGION = (
-        ('AddisAbaba', 'AddisAbaba'),
         ('Afar', 'Afar'),
         ('Amhara', 'Amhara'),
         ('Benishangul', 'Benishangul'),
-        ('DireDawa', 'DireDawa'),
         ('Gambella', 'Gambella'),
         ('Harari', 'Harari'),
         ('Oromia', 'Oromia'),
@@ -80,7 +78,7 @@ class House(models.Model):
     Introduction = models.TextField(null=True, default="")
     HouseStatus = models.CharField(max_length=200, choices=HOUSESTATUS)
 
-class Order(models.Model):
+class Book(models.Model):
     PAYOPTION = (
         ('Cash', 'Cash'),
         ('Telebirr', 'Telebirr'),
