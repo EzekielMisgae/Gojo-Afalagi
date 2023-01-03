@@ -9,7 +9,7 @@ from django.contrib import messages
 from .models import *
 from .forms import BookForm, CreateUserForm
 from .filters import BookFilter
-from .decorators import unauthenticated_user, allowed_users
+from .decorators import unauthenticated_user, allowed_users, landlord_only
 
 #create your views here
 @unauthenticated_user
@@ -64,7 +64,7 @@ def profile(request):
     return render(request, 'accounts/profile.html', context)
 
 @login_required(login_url='webapp:login')
-@allowed_users(allowed_roles=['landlord'])
+@landlord_only
 def rentals(request):
     rentals = House.objects.all()
     return render(request, 'accounts/allHouse.html', {'rentals':rentals})

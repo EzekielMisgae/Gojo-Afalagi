@@ -1,6 +1,6 @@
+{% include 'accounts/links.html' %}
+{% load static %}
 {% csrf_token %}
-<!DOCTYPE html>
-<html>
 
 <head>
   <title>Login</title>
@@ -9,7 +9,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
     integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
 
   <style>
     body,
@@ -68,7 +67,6 @@
       line-height: 72px;
       color: #124265;
       font-family: "Poppins", sans-serif;
-
     }
 
     .login_btn {
@@ -114,17 +112,29 @@
       width: 70%;
     }
   </style>
-
 </head>
-<section id="hero" class="d-flex align-items-center">
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
 
-  <body>
+    <h1 class="logo"><a href="{% url 'webapp:landingPage' %}">Gojo Afalagi</a></h1>
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a class="nav-link scrollto active" href="{% url 'webapp:landingPage' %}">Home</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'webapp:login' %}">About</a></li>
+        <li><a class="nav-link scrollto" href="{% url 'webapp:login' %}">Contact us</a></li>
+        <li><a class="getstarted scrollto" href="{% url 'webapp:register' %}">Sign-up</a></li>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+  </div>
+</header><!-- End Header -->
+
+<body>
+  <section id="hero" class="d-flex align-items-center">
     <div class="container h-100">
       <div class="d-flex justify-content-center h-100">
         <div class="user_card">
           <div class="d-flex justify-content-center">
-
-
             <h3 id="form-title">LOGIN</h3>
           </div>
           <div class="d-flex justify-content-center form_container">
@@ -141,12 +151,10 @@
                 </div>
                 <input type="password" name="password" placeholder="Password..." class="form-control">
               </div>
-
               <div class="d-flex justify-content-center mt-3 login_container">
                 <input class="btn login_btn" type="submit" value="Login">
               </div>
             </form>
-
           </div>
           {% for message in messages %}
           <p id="messages">{{message}}</p>
@@ -155,12 +163,71 @@
             <div class="d-flex justify-content-center links">
               Don't have an account? <a href="{% url 'webapp:register' %}" class="ml-2">Sign Up</a>
             </div>
-
           </div>
         </div>
       </div>
     </div>
-</section>
+  </section>
 </body>
+<!-- ==== Footer start ==== -->
+<footer id="footer">
 
-</html>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h3>GoJo Afalagi</h3>
+          <p>
+            Catholic <br>
+            Bahirdar, Kebele 13<br>
+            Ethiopia <br><br>
+            <strong>Phone:</strong> +251975325354<br>
+            <strong>Email:</strong> ezkielmisgae@gmailcom<br>
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:landingPage' %}">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">About</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Apartment Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">House Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Condo Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Room Rentals</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-6 footer-newsletter">
+          <h4>Special Thank</h4>
+          <p>For the whole AlX and Holberton team for creating this course for free.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container d-md-flex py-4">
+
+    <div class="me-md-auto text-center text-md-start">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
+      </div>
+    </div>
+    <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      <a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i class="bx bxl-twitter"></i></a>
+      <a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i class="bx bxl-facebook"></i></a>
+      <a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i class="bx bxl-instagram"></i></a>
+      <a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+    </div>
+  </div>
+</footer>

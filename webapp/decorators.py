@@ -25,3 +25,17 @@ def allowed_users(allowed_roles=[]):
                 return HttpResponse('You can not access this page with your customer type.')
         return wrapper_func
     return decorator
+
+def landlord_only(view_func):
+    def wrapper_function(request, *args, **kwargs):
+        group = None
+        if request.user.groups.exists():
+            group = request.user.groups.all()[0].name
+
+        if group == 'tenant':
+            return redirect('user-page')
+
+        if group == 'landlord':
+            return view_func(request, *args, **kwargs)
+
+    return wrapper_function
