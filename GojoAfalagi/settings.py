@@ -78,6 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'GojoAfalagi',
+        'CLIENT': {
+            'host': 'localhost'
+        }
     }
 }
 
