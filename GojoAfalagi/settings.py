@@ -74,9 +74,6 @@ WSGI_APPLICATION = 'GojoAfalagi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-DSECRET_KEY = config('SECRET_KEY') 
-DEBUG = config('DEBUG', cast=bool) 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -84,7 +81,7 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
-        'PORT': '80',
+        'PORT': '8000',
     }
 }  
 
