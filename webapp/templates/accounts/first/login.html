@@ -120,8 +120,12 @@
     <nav id="navbar" class="navbar">
       <ul>
         <li><a class="nav-link scrollto active" href="{% url 'webapp:landingPage' %}">Home</a></li>
-        <li><a class="nav-link scrollto" href="{% url 'webapp:login' %}">About</a></li>
-        <li><a class="nav-link scrollto" href="{% url 'webapp:login' %}">Contact us</a></li>
+        <li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+              <li><a href="{% url 'webapp:about' %}">About Gojo-Afalagi</a></li>
+              <li><a href="{% url 'webapp:aboutme' %}">About me</a></li>
+          </ul>
+      </li>
         <li><a class="getstarted scrollto" href="{% url 'webapp:register' %}">Sign-up</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

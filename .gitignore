@@ -1,4 +1,1 @@
-*.env
-bin/
-lib/
-*.sqlite3
+.env

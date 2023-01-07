@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
-class User(models.Model):
+class Customer(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     REGION = (
         ('AddisAbaba', 'AddisAbaba'),
         ('Afar', 'Afar'),
@@ -17,26 +19,15 @@ class User(models.Model):
         ('SNNPR', 'SNNPR'),
         ('Tigray', 'Tigray'),
     )
-    UserID = models.AutoField(primary_key=True,null=False)
-    Username = models.CharField(max_length=255,null=False)
-    Email = models.CharField(max_length=255,null=False)
-    Phone = models.CharField(max_length=11,null=True)
-    Password = models.CharField(max_length=255,null=False)
-    Kebele = models.IntegerField
-    KebeleID = models.CharField(max_length=10, null=True, default=0) 
-    Region = models.CharField(max_length=100, choices=REGION)
-    City = models.CharField(max_length=255,null=True)
-    Address = models.CharField(max_length=255,null=True)
-    Profile = models.FileField(upload_to='',null=True,default='') 
-    Login = models.BooleanField(null=False,default=False)
-    Job = models.CharField(max_length=255,null=True)
-    Introduction = models.TextField(null=True)
-
-class Info(models.Model):
-    InfoID = models.AutoField(primary_key=True,null=False)
-    Datetime = models.DateTimeField(null=False)
-    UserID = models.IntegerField(null=False) 
-    KebeleID = models.IntegerField(null=True)
+    username = models.CharField(max_length=255,null=False)
+    email = models.CharField(max_length=255,null=False)
+    phone = models.CharField(max_length=11,null=True)
+    password = models.CharField(max_length=255,null=False)
+    kebele = models.IntegerField
+    kebeleID = models.CharField(max_length=10, null=True, default=0) 
+    region = models.CharField(max_length=100, choices=REGION)
+    city = models.CharField(max_length=255,null=True)
+    address = models.CharField(max_length=255,null=True)
 
 class House(models.Model):
     REGION = (
@@ -62,21 +53,18 @@ class House(models.Model):
         ('Condominium', 'Condominium'),
         ('Luxury', 'Luxury')
     )
-
-    HouseID = models.AutoField(primary_key=True,null=False)
-    Housetype = models.CharField(max_length=255, choices=HOUSETYPE, null=True)
-    NumRoom = models.IntegerField
-    Kebele = models.IntegerField
-    Region = models.CharField(max_length=100, choices=REGION)
-    City = models.CharField(max_length=255,null=True)
-    Address = models.CharField(max_length=255,null=True)
-    Area = models.FloatField(null=True)
-    Price = models.IntegerField(null=True)
-    Floor = models.IntegerField(null=True)
-    LandlordName = models.CharField(max_length=255,null=True)
-    LandlordPhone = models.CharField(max_length=255, null=True)
-    Introduction = models.TextField(null=True, default="")
-    HouseStatus = models.CharField(max_length=200, choices=HOUSESTATUS)
+    houseID = models.IntegerField(null=False)
+    housetype = models.CharField(max_length=255, choices=HOUSETYPE, null=True)
+    numRoom = models.IntegerField
+    kebele = models.IntegerField
+    region = models.CharField(max_length=100, choices=REGION)
+    city = models.CharField(max_length=255,null=True)
+    area = models.FloatField(null=True)
+    price = models.IntegerField(null=True)
+    floor = models.IntegerField(null=True, default=0)
+    landlordName = models.CharField(max_length=255,null=True)
+    landlordPhone = models.CharField(max_length=255, null=True)
+    houseStatus = models.CharField(max_length=200, default='Available' ,choices=HOUSESTATUS)
 
 class Book(models.Model):
     PAYOPTION = (
@@ -86,26 +74,10 @@ class Book(models.Model):
         ('Bank', 'Bank'),
         ('Other', 'Other'),
     )
-
-    OrderID = models.AutoField(primary_key=True,null=False)
-    OrderDate = models.DateTimeField(null=False)
-    DueDate = models.DateTimeField(null=False)
-    Price = models.IntegerField(null=False)
-    PaymentOption = models.BooleanField(null=False, choices=PAYOPTION)
-    UserID = models.IntegerField(null=False)
-    HouseID = models.IntegerField(null=False)
-    KebeleID = models.IntegerField(null=False)
-
-class Message(models.Model):
-    MessageID = models.AutoField(primary_key=True,null=False)
-    WorkID = models.IntegerField(null=True) 
-    Errornumber = models.IntegerField(null=True)
-    UserID = models.IntegerField(null=False)
-    Text = models.TextField(null=True)
-    Username = models.CharField(max_length=255,null=False)
+    created = models.DateTimeField(auto_now_add=True)
+    price = models.IntegerField(null=False)
+    paymentOption = models.BooleanField(null=False, choices=PAYOPTION)
+    kebeleID = models.IntegerField(null=False)
 
 class Picture(models.Model):
-    PicID = models.AutoField(primary_key=True,null=False)
-    Pic = models.FileField(upload_to='',null=True,default='')
-    UserID = models.IntegerField(null=True)
-    HouseID = models.IntegerField(null=True)
+    pic = models.FileField(upload_to='',null=True,default='')

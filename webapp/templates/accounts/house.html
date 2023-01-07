@@ -1,15 +1,15 @@
-{% extends 'accounts/headerFooter.html' %}
+{% include 'accounts/links.html' %}
 {% load static %}
-{% block content %}
-<html>
-<section class="h-150 gradient-custom-2">
-    <div class="container py-5 h-150">
-        <div class="row d-flex justify-content-center align-items-center h-150">
+
+<section class="h-10 gradient-custom-2">
+    <div class="container py-5 ">
+        <div class="row d-flex justify-content-center align-items-center ">
             <div class="col col-lg-9 col-xl-7">
                 <div class="card">
                     <div class="card-body p-4 text-black">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <p class="lead fw-normal mb-0">Recently uploaded houses</p>
+                            <p class="mb-0"><a href="{% url 'webapp:rentals' %}" class="text-muted">Show all</a></p>
                         </div>
                         <div class="row g-2">
                             <div class="col mb-2">
@@ -57,15 +57,3 @@
         </div>
     </div>
 </section>
-</html>
-<style>
-    .gradient-custom-2 {
-        /* fallback for old browsers */
-        background: #fbc2eb;
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right, rgb(51, 140, 218), rgba(166, 193, 238, 1))
-    }
-</style>
-{% endblock %}

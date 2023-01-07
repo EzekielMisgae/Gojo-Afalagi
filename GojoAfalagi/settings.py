@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+from decouple import config, Csv
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*+%lw7j=bnmaj)b31h31)n!1i@jki-^lvmoa)22&qg3arh^c77'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app', '.now.sh']
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -70,16 +71,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'GojoAfalagi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+DSECRET_KEY = config('SECRET_KEY') 
+DEBUG = config('DEBUG', cast=bool) 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'GojoAfalagi',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config('DB_NAME'), 
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': '80',
     }
-}
+}  
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
