@@ -1,9 +1,6 @@
 #!/bin/bash
 
 #Bulid the project
-echo "Initiating virtualEnv..."
-python3.9 manage.py runserver
-
 echo "Building the project..."
 python3.9 -m pip install -r requirements.txt
 

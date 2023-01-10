@@ -12,124 +12,21 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
     integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-  <style>
-    body,
-    html {
-      margin: 0;
-      padding: 0;
-      margin: 0;
-      color: #124265;
-      font-family: "Poppins", sans-serif;
-    }
-
-    #hero {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      background: url("static/img/hero-bg.jpg") top center;
-      background-size: cover;
-      position: relative;
-    }
-
-    #hero:before {
-      content: "";
-      background: rgba(255, 255, 255, 0.8);
-      position: absolute;
-      bottom: 0;
-      top: 0;
-      left: 0;
-      right: 0;
-    }
-
-    .user_card {
-      width: 350px;
-      margin-top: auto;
-      margin-bottom: auto;
-      background: #e4f8ff;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      padding: 10px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      border-radius: 5px;
-
-    }
-
-    .form_container {
-      margin-top: 20px;
-      font-family: "Poppins", sans-serif;
-    }
-
-    #form-title {
-      margin: 0;
-      font-weight: 700;
-      line-height: 72px;
-      color: #124265;
-      font-family: "Poppins", sans-serif;
-
-    }
-
-    .login_btn {
-      width: 100%;
-      background: #2487ce !important;
-      padding: 8px 20px;
-      border-radius: 4px;
-      color: #fff !important;
-    }
-
-    .login_btn:focus {
-      box-shadow: none !important;
-      outline: 0px !important;
-    }
-
-    .login_container {
-      padding: 0 2rem;
-    }
-
-    .input-group-text {
-      background: #5bc3f7 !important;
-      color: white !important;
-      border: 0 !important;
-      border-radius: 0.25rem 0 0 0.25rem !important;
-    }
-
-    .input_user,
-    .input_pass:focus {
-      box-shadow: none !important;
-      outline: 0px !important;
-    }
-
-    #messages {
-      font-family: "Poppins", sans-serif;
-      text-align: center;
-      align-self: center;
-      background: #dd7e7e;
-      border-radius: 4px;
-      color: #fff;
-      font-size: 10px;
-      padding: 8px;
-      margin-top: 10px;
-      width: 70%;
-    }
-  </style>
 </head>
     <header id="header" class="fixed-top">
       <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="{% url 'webapp:landingPage' %}">Gojo Afalagi</a></h1>
+        <h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto active" href="{% url 'webapp:landingPage' %}">Home</a></li>
+            <li><a class="nav-link scrollto active" href="{% url 'landingPage' %}">Home</a></li>
             <li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                  <li><a href="{% url 'webapp:about' %}">About Gojo-Afalagi</a></li>
-                  <li><a href="{% url 'webapp:aboutme' %}">About me</a></li>
+                  <li><a href="{% url 'about' %}">About Gojo-Afalagi</a></li>
+                  <li><a href="{% url 'aboutme' %}">About me</a></li>
               </ul>
           </li>
-            <li><a class="getstarted scrollto" href="{% url 'webapp:login' %}">Sign-in</a></li>
+            <li><a class="getstarted scrollto" href="{% url 'login' %}">Sign-in</a></li>
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -183,7 +80,7 @@
         {{form.errors}}
         <div class="mt-4">
           <div class="d-flex justify-content-center links">
-            Already have an account? <a href="{% url 'webapp:login' %}" class="ml-2">Login</a>
+            Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
           </div>
         </div>
       </div>
@@ -226,18 +123,18 @@
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:landingPage' %}">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">About</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'landingPage' %}">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">About</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:register' %}">Apartment Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:register' %}">House Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:register' %}">Condo Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:register' %}">Room Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'register' %}">Apartment Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'register' %}">House Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'register' %}">Condo Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'register' %}">Room Rentals</a></li>
           </ul>
         </div>
 
@@ -268,4 +165,107 @@
   </div>
 </footer>
 
+<style>
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    color: #124265;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url("static/img/hero-bg.jpg") top center;
+    background-size: cover;
+    position: relative;
+  }
+
+  #hero:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .user_card {
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #e4f8ff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+  }
+
+  .form_container {
+    margin-top: 20px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  #form-title {
+    margin: 0;
+    font-weight: 700;
+    line-height: 72px;
+    color: #124265;
+    font-family: "Poppins", sans-serif;
+
+  }
+
+  .login_btn {
+    width: 100%;
+    background: #2487ce !important;
+    padding: 8px 20px;
+    border-radius: 4px;
+    color: #fff !important;
+  }
+
+  .login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+
+  .login_container {
+    padding: 0 2rem;
+  }
+
+  .input-group-text {
+    background: #5bc3f7 !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+  }
+
+  .input_user,
+  .input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+  }
+
+  #messages {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    align-self: center;
+    background: #dd7e7e;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 10px;
+    padding: 8px;
+    margin-top: 10px;
+    width: 70%;
+  }
+</style>
 </html>

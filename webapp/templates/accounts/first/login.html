@@ -116,17 +116,17 @@
 <header id="header" class="fixed-top">
   <div class="container d-flex align-items-center justify-content-between">
 
-    <h1 class="logo"><a href="{% url 'webapp:landingPage' %}">Gojo Afalagi</a></h1>
+    <h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="{% url 'webapp:landingPage' %}">Home</a></li>
+        <li><a class="nav-link scrollto active" href="{% url 'landingPage' %}">Home</a></li>
         <li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-              <li><a href="{% url 'webapp:about' %}">About Gojo-Afalagi</a></li>
-              <li><a href="{% url 'webapp:aboutme' %}">About me</a></li>
+              <li><a href="{% url 'about' %}">About Gojo-Afalagi</a></li>
+              <li><a href="{% url 'aboutme' %}">About me</a></li>
           </ul>
       </li>
-        <li><a class="getstarted scrollto" href="{% url 'webapp:register' %}">Sign-up</a></li>
+        <li><a class="getstarted scrollto" href="{% url 'register' %}">Sign-up</a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
@@ -165,7 +165,7 @@
           {% endfor %}
           <div class="mt-4">
             <div class="d-flex justify-content-center links">
-              Don't have an account? <a href="{% url 'webapp:register' %}" class="ml-2">Sign Up</a>
+              Don't have an account? <a href="{% url 'register' %}" class="ml-2">Sign Up</a>
             </div>
           </div>
         </div>
@@ -194,18 +194,18 @@
         <div class="col-lg-2 col-md-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:landingPage' %}">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">About</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'landingPage' %}">Home</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">About</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Apartment Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">House Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Condo Rentals</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Room Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo Rentals</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room Rentals</a></li>
           </ul>
         </div>
 

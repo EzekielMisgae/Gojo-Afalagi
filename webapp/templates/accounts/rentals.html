@@ -2,70 +2,42 @@
 {% load static %}
 {% block content %}
 <html>
-<section class="h-150 gradient-custom-2">
-    <div class="container py-5 h-150">
-        <div class="row d-flex justify-content-center align-items-center h-150">
-            <div class="col col-lg-9 col-xl-7">
-                <div class="card">
-                    <div class="card-body p-4 text-black">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <p class="lead fw-normal mb-0">Recently uploaded houses</p>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col mb-2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                            <div class="col">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                                    alt="image 1" class="w-100 rounded-3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div style="padding: 3%;">
+<header style="margin-top: 6%;" class="tg-header">
+    <h1 class="tg-h1">All available houses are listed here</h1>
+    <hr>
+</header>
+<form style="margin-left: 2%;" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+</div>
+<hr style="margin-top: -2%;">
+<div style="padding: 3%;">
+    {% if img_obj %}
+    <img src="{{ img_obj.image.url}}" alt="connect" style="max-width: 500px; max-height:400px">
+    {% endif %}
+    <h3>{{img_obj.title}}</h3>
+    {% for post in posts %}
+    <div class="panel panel-lg panel-custom">
+        <div class="panel-heading post-heading1">
+            <img src="{{ post.img_obj.url }}">
         </div>
+        ....
     </div>
-</section>
+    {% endfor %}
+</div>
+
 </html>
+
 <style>
-    .gradient-custom-2 {
-        /* fallback for old browsers */
-        background: #fbc2eb;
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right, rgb(51, 140, 218), rgba(166, 193, 238, 1))
+    .add-experience:hover {
+        background: #42c5f9;
+        color: #fff;
+        cursor: pointer;
+        border: solid 1px #BA68C8
     }
 </style>
 {% endblock %}

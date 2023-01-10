@@ -1,30 +1,34 @@
-from django.conf.urls.static import static
-from django.contrib import admin
-from django.urls import path, include
-from . import views
+from django.urls import path
 from django.conf import settings
+from django.conf.urls.static import static
+from . import views
 
-app_name = 'webapp'
 
 urlpatterns = [
-    path('admin', admin.site.urls),
     path('', views.landingPage, name='landingPage'),
     path('login',views.loginPage, name='login'),
     path('register',views.registerPage, name='register'),
     path('logout',views.logoutUser, name='logout'),
 
-    path('homePage', views.homePage, name='home'),
+    path('homePage',views.homePage, name='home'),
+
     path('about',views.about, name='about'),
     path('aboutme',views.aboutme, name='aboutme'),
-    path('rentals',views.rentals, name='rentals'),
     path('profile',views.profile, name='profile'),
-    path('contact',views.contact, name='contact'),
 
-    path('apartment',views.rentals, name='apartment'),
-    path('house',views.rentals, name='house'),
-    path('rooms',views.rentals, name='rooms'),
-    path('condominium',views.rentals, name='condominium'),
-    path('luxurious',views.rentals, name='luxurious'),
+    path('rentals',views.image_upload_view, name='rentals'),
 
+    path('house',views.house, name='house'),
+    path('apartment',views.apartment, name='apartment'),
+    path('room',views.room, name='room'),
+    path('condominium',views.condominium, name='condominium'),
+    path('luxurious',views.luxurious, name='luxurious'),
+
+    path('create_book/<str:pk>/', views.createBook, name="create_book"),
+    path('update_book/<str:pk>/', views.updateBook, name="update_book"),
+    path('delete_book/<str:pk>/', views.deleteBook, name="delete_book"),
 ]
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

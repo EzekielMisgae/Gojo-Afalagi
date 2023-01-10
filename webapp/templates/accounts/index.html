@@ -8,11 +8,14 @@
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9 text-center">
-                        <br><h1>Welcome, {{request.user}}</h1>
+                        <br><h1>Welcome to Gojo-Afalagi,
+                            Dear {{request.user}}</h1>
                         <h4>We provide homes for tenants</h4>
                     </div>
                     <img style="width:50%;height:50%;" src="{% static 'img/house.png' %}" alt="AI generated image of a girl searching a house.">
                 </div>
+
+
                 <!-- ======= About Section ======= -->
                 <section style="text-align: left;" id="about" class="about">
                     <div class="container" data-aos="fade-up">
@@ -36,7 +39,7 @@
                         data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="ri-stack-line"></i></div>
-                            <h4 class="title"><a href="">Apartment</a></h4>
+                            <h4 class="title"><a href="{% url 'apartment' %}">Apartment</a></h4>
                             <p class="description">We simplify the process of finding a new apartment by offering
                                  renters the most comprehensive database including detailed and accurate 
                                  apartment listings across the country. Our innovative technology includes the 
@@ -49,7 +52,7 @@
                         data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="ri-stack-line"></i></div>
-                            <h4 class="title"><a href="">House</a></h4>
+                            <h4 class="title"><a href="{% url 'house' %}">House</a></h4>
                             <p class="description">If you're looking for houses for rent, Gojo Afalagi features available 
                                 istings in every corner of the country. We make the process easy and straightforward with 
                                 filters or tags that can narrow down your search by region, city, and kebele. Each of 
@@ -60,7 +63,7 @@
                         data-aos-delay="400">
                         <div class="icon-box">
                             <div class="icon"><i class="ri-stack-line"></i></div>
-                            <h4 class="title"><a href="">Rooms</a></h4>
+                            <h4 class="title"><a href="{% url 'room' %}">Rooms</a></h4>
                             <p class="description">Depending on what you like or your new room to look like, choose the available rooms 
                                 on the filter and narrow down your search to exactly what you want. Renting a room is 
                                 very convenient. You can find rooms in our ountry using GojoAfalagi™...</p>
@@ -70,14 +73,13 @@
                         data-aos-delay="500">
                         <div class="icon-box">
                             <div class="icon"><i class="ri-stack-line"></i></div>
-                            <h4 class="title"><a href="">Condominium</a></h4>
+                            <h4 class="title"><a href="{% url 'condominium' %}">Condominium</a></h4>
                             <p class="description">Find condos for rent & in foreclosure at 
                                 GojoAfalagi™. Our Condominium Professionals are ready to help you rent
                                 a condo today. Toggle navigation then search...</p>
                         </div>
                     </div>
                 </div>
-            {% include 'accounts/house.html' %}
             </div>
         </section>
         <!-- End Hero -->

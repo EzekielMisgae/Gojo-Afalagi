@@ -4,28 +4,28 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-        <h1 class="logo"><a href="{% url 'webapp:landingPage' %}">Gojo Afalagi</a></h1>
+        <h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
         <nav id="navbar" class="navbar">
             <ul>
                 <li><a class="nav-link scrollto active" href="">Home</a></li>
-                <li class="dropdown"><a href="{% url 'webapp:login' %}"><span>Rentals</span> <i
+                <li class="dropdown"><a href="{% url 'login' %}"><span>Rentals</span> <i
                             class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{% url 'webapp:login' %}">Apartment</a></li>
-                        <li><a href="{% url 'webapp:login' %}">House</a></li>
-                        <li><a href="{% url 'webapp:login' %}">Rooms</a></li>
-                        <li><a href="{% url 'webapp:login' %}">Condominium</a></li>
-                        <li><a href="{% url 'webapp:login' %}">Luxurious</a></li>
+                        <li><a href="{% url 'login' %}">Apartment</a></li>
+                        <li><a href="{% url 'login' %}">House</a></li>
+                        <li><a href="{% url 'login' %}">Rooms</a></li>
+                        <li><a href="{% url 'login' %}">Condominium</a></li>
+                        <li><a href="{% url 'login' %}">Luxurious</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-link scrollto o" href="{% url 'webapp:login' %}">Profile</a></li>
+                <li><a class="nav-link scrollto o" href="{% url 'login' %}">Profile</a></li>
                 <li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{% url 'webapp:about' %}">About Gojo-Afalagi</a></li>
-                        <li><a href="{% url 'webapp:aboutme' %}">About me</a></li>
+                        <li><a href="{% url 'about' %}">About Gojo-Afalagi</a></li>
+                        <li><a href="{% url 'aboutme' %}">About me</a></li>
                     </ul>
                 </li>
-                <li><a class="getstarted scrollto" href="{% url 'webapp:login' %}">Sign-in</a></li>
+                <li><a class="getstarted scrollto" href="{% url 'login' %}">Sign-in</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -40,7 +40,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9 text-center">
                         <br>
-                        <h1 style="text-align: center;">Welcome to Gojo Afalagi website</h1>
+                        <br><h1>Welcome to Gojo-Afalagi!</h1>
                         <h4>We provide homes for tenants</h4>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="container" data-aos="fade-up">
 
                         <div class="section-title">
-                            <h4 style="text-align: center" ;>What is GoJo Afalagi?</h4>
+                            <h4 style="text-align: center">What is GoJo Afalagi?</h4>
                             <br>
                             <p>GoJo-Afalagi is a web application that provides users with a platform to easily search
                                 for and view available rental properties. The application was built using a combination
@@ -75,7 +75,7 @@
                                     <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
                                     <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
                                 </ul>
-                                <a href="{% url 'webapp:login' %}" class="btn-learn-more">Learn More</a>
+                                <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
                             </div>
                             <div class="col-lg-6 pt-4 pt-lg-0">
                                 <p>
@@ -94,7 +94,6 @@
                     </div>
                 </section><!-- End About Section -->
 
-                <!-- End About Section -->
                 <div class="row icon-boxes">
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
                         data-aos-delay="200">
@@ -144,7 +143,7 @@
 
                 </div>
                 <div class="text-center">
-                    <a href="{% url 'webapp:register' %}" class="btn-get-started scrollto">Get Started</a>
+                    <a href="{% url 'register' %}" class="btn-get-started scrollto">Get Started</a>
                 </div>
             </div>
 
@@ -160,7 +159,7 @@
                 </div>
             </div>
         </section>
-        {% include 'accounts/house.html' %}
+
         <!-- ==== Footer start ==== -->
         <footer id="footer">
             <div class="footer-top">
@@ -181,10 +180,10 @@
                             <h4>Useful Links</h4>
                             <ul>
                                 <li><i class="bx bx-chevron-right"></i> <a
-                                        href="{% url 'webapp:landingPage' %}">Home</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Rentals</a>
+                                        href="{% url 'landingPage' %}">Home</a></li>
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Rentals</a>
                                 </li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Profile</a>
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Profile</a>
                                 </li>
                                 </li>
                             </ul>
@@ -192,13 +191,13 @@
                         <div class="col-lg-3 col-md-6 footer-links">
                             <h4>Our Services</h4>
                             <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Apartment
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment
                                         Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">House
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House
                                         Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Condo
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo
                                         Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'webapp:login' %}">Room
+                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room
                                         Rentals</a></li>
                             </ul>
                         </div>
