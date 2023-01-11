@@ -1,7 +1,7 @@
 {% include 'accounts/links.html' %}
 {% load static %}
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
+
+<header id="header" class="fixed-top"> <!-- ======= Header ======= -->
     <div class="container d-flex align-items-center justify-content-between">
 
         <h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
@@ -32,67 +32,23 @@
     </div>
 </header><!-- End Header -->
 
-<!-- ======= Description section ======= -->
-<div class="row">
+<div class="row"> <!-- ======= Description section ======= -->
     <div class="col-md">
         <section id="hero" class="d-flex align-items-center">
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9 text-center">
                         <br>
-                        <br><h1>Welcome to Gojo-Afalagi!</h1>
+                        <br>
+                        <h1>Welcome to Gojo-Afalagi!</h1>
                         <h4>We provide homes for tenants</h4>
                     </div>
                 </div>
-                <!-- ======= About Section ======= -->
-                <section id="about" class="about">
-                    <div class="container" data-aos="fade-up">
-
-                        <div class="section-title">
-                            <h4 style="text-align: center">What is GoJo Afalagi?</h4>
-                            <br>
-                            <p>GoJo-Afalagi is a web application that provides users with a platform to easily search
-                                for and view available rental properties. The application was built using a combination
-                                of front-end technologies such as HTML, CSS, and JavaScript, as well as a backend
-                                framework written in Python and Django. It allows both renters and property owners to
-                                interact directly with one another, eliminating the need for intermediaries like
-                                brokers. With GoJo-Afalagi, renters can quickly and easily browse through a variety of
-                                listings to find a home that meets their needs, while property owners can post their
-                                available properties for rent, reaching a wide audience of potential renters. Overall,
-                                GoJo-Afalagi simplifies the process of finding and renting a home, providing a
-                                convenient and user-friendly experience for all parties involved.</p>
-                            <br>
-                            <h4 style="text-align: center;">What you can do and don't?</h4>
-                            <br>
-                        </div>
-                        <div class="row content">
-                            <div class="col-lg-6">
-                                <p>Here are the lists you can do if you register.</p>
-                                <ul style="list-style-type: none;">
-                                    <li><i class="ri-check-double-line"></i> Create an account or log in to access the
-                                        site.</li>
-                                    <li><i class="ri-check-double-line"></i> Search for homes available for rent.</li>
-                                    <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
-                                    <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
-                                </ul>
-                                <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
-                            </div>
-                            <div class="col-lg-6 pt-4 pt-lg-0">
-                                <p>
-                                    Here are the lists you can't do without registering.
-                                </p>
-                                <ul>
-                                    <li>access certain features or content without creating an account or logging in
-                                    </li>
-                                    <li>advertise homes for rent if you are not the owner</li>
-                                    <li>access all available rental listings without registering</li>
-                                    <li>post homes using for-tenants account.</li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </section><!-- End About Section -->
+                <div>
+                    <img style="width:50%;height:50%; margin: 10px auto 20px;
+                    display: block;" src="{% static 'img/house.png' %}"
+                        alt="AI generated image of a girl searching a house.">
+                </div>
 
                 <div class="row icon-boxes">
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
@@ -113,10 +69,8 @@
 
                             <h4 class="title"><a href="">House</a></h4>
                             <p class="description">If you're looking for houses for rent, Gojo Afalagi features
-                                available
-                                listings in every corner of the country. We make the process easy and straightforward
-                                with
-                                filters or tags that can narrow down your search by region, city, and kebele. Each of
+                                available listings in every corner of the country. We make the process easy and straightforward
+                                with filters or tags that can narrow down your search by region, city, and kebele. Each of
                                 the homes for rent features a detailed...</p>
                         </div>
                     </div>
@@ -125,8 +79,7 @@
                         <div class="icon-box">
                             <h4 class="title"><a href="">Rooms</a></h4>
                             <p class="description">Depending on what you like or your new room to look like, choose the
-                                available rooms
-                                on the filter and narrow down your search to exactly what you want. Renting a room is
+                                available rooms on the filter and narrow down your search to exactly what you want. Renting a room is
                                 very convenient. You can find rooms in our ountry using GojoAfalagi™...</p>
                         </div>
                     </div>
@@ -140,93 +93,122 @@
                                 a condo today. Toggle navigation then search...</p>
                         </div>
                     </div>
-
                 </div>
                 <div class="text-center">
                     <a href="{% url 'register' %}" class="btn-get-started scrollto">Get Started</a>
                 </div>
             </div>
+        </section> <!-- End Hero -->
 
-        </section>
-        <!-- End Hero -->
-        <!-- ======= Services Section ======= -->
-        <section id="services" class="services section-bg">
-            <div class="container" data-aos="fade-up">
+        <div class="row"> <!-- ======= About Section ======= -->
+            <div class="col-md">
+                <br><br>
+                <section>
+                    <section id="about" class="about">
+                        <div class="container" data-aos="fade-up">
+                            <div>
+                                <h4 style="text-align: center">What is GoJo Afalagi?</h4>
+                                <br>
+                                <p>GoJo-Afalagi is a web application that provides users with a platform to easily search for and view available rental properties.
+                                    It allows renters to interact directly with property owners , eliminating the need for intermediaries like brokers. 
+                                    With GoJo-Afalagi, renters can quickly and easily browse through a variety of listings to find a home that meets their needs.</p>
+                                <br>
+                                <h4 style="text-align: center;">What you can do and don't?</h4>
+                                <br>
+                            </div>
+                            <div class="row content">
+                                <div class="col-lg-6">
+                                    <p>Here are the lists you can do if you register.</p>
+                                    <ul style="list-style-type: none;">
+                                        <li><i class="ri-check-double-line"></i> Create an account or log in to access the site.</li>
+                                        <li><i class="ri-check-double-line"></i> Search for homes available for rent.</li>
+                                        <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
+                                        <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
+                                    </ul>
+                                    <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
+                                </div>
+                                <div class="col-lg-6 pt-4 pt-lg-0">
+                                    <p>
+                                        Here are the lists you can't do without registering.
+                                    </p>
+                                    <ul>
+                                        <li>access certain features or content without creating an account or logging in
+                                        </li>
+                                        <li>advertise homes for rent if you are not the owner</li>
+                                        <li>access all available rental listings without registering</li>
+                                        <li>post homes using for-tenants account.</li>
+                                    </ul>
 
-                <div class="section-title">
-                    <h2>Recently available homes</h2>
-                    <p></p>
-                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
             </div>
-        </section>
-
-        <!-- ==== Footer start ==== -->
-        <footer id="footer">
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-3 col-md-6 footer-contact">
-                            <h3>GoJo Afalagi</h3>
-                            <p>
-                                Catholic <br>
-                                Bahirdar, Kebele 13<br>
-                                Ethiopia <br><br>
-                                <strong>Phone:</strong> +251975325354<br>
-                                <strong>Email:</strong> ezkielmisgae@gmailcom<br>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-6 footer-links">
-                            <h4>Useful Links</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a
-                                        href="{% url 'landingPage' %}">Home</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Rentals</a>
-                                </li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Profile</a>
-                                </li>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment
-                                        Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House
-                                        Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo
-                                        Rentals</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room
-                                        Rentals</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-4 col-md-6 footer-newsletter">
-                            <h4>Special Thank</h4>
-                            <p>For the whole AlX and Holberton team for creating this course for free.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container d-md-flex py-4">
-                <div class="me-md-auto text-center text-md-start">
-                    <div class="copyright">
-                        &copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
-                    </div>
-                    <div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
-                    </div>
-                </div>
-                <div class="social-links text-center text-md-right pt-3 pt-md-0">
-                    <a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i
-                            class="bx bxl-twitter"></i></a>
-                    <a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i
-                            class="bx bxl-facebook"></i></a>
-                    <a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i
-                            class="bx bxl-instagram"></i></a>
-                    <a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i
-                            class="bx bxl-linkedin"></i></a>
-                </div>
-            </div>
-        </footer>
+        </div>
     </div>
-</div>
+</div> <!-- End About Section -->
+
+
+<footer id="footer"> <!-- ==== Footer start ==== -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h3>GoJo Afalagi</h3>
+                    <p>
+                        Catholic <br>
+                        Bahirdar, Kebele 13<br>
+                        Ethiopia <br><br>
+                        <strong>Phone:</strong> +251975325354<br>
+                        <strong>Email:</strong> ezkielmisgae@gmailcom<br>
+                    </p>
+                </div>
+                <div class="col-lg-2 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'landingPage' %}">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Rentals</a>
+                        </li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Profile</a>
+                        </li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment
+                                Rentals</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House
+                                Rentals</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo
+                                Rentals</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room
+                                Rentals</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 footer-newsletter">
+                    <h4>Special Thank</h4>
+                    <p>For the whole AlX and Holberton team for creating this course for free.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
+            </div>
+        </div>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        </div>
+    </div>
+</footer>

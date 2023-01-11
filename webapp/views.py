@@ -98,18 +98,23 @@ def homePage(request):
 
 @login_required(login_url='login')
 def profile(request):
-    form = profileUpdate()
+    customerById = Customer.objects.get(user=request.user)
+    form = profileUpdate(instance=customerById)
     if request.method == 'POST':
-        form = profileUpdate(request.POST)
+        form = profileUpdate(request.POST, instance=customerById)
+        # import pdb; pdb.set_trace()
         if form.is_valid():
+            
             form.save()
-            username = form.cleaned_data.get('username')
+            name = form.cleaned_data.get('fullName')
 
-            messages.success(request, 'Account updated successfully for ' + username)
+            messages.success(request, 'Account updated successfully for ' + name)
 
             return redirect('profile')
-    context = {}
+    context = {'form':form}
     return render(request, 'accounts/profile.html', context)
+
+
 
 def about(request):
     context = {}

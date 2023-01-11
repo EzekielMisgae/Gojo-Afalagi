@@ -24,9 +24,9 @@ urlpatterns = [
     path('condominium',views.condominium, name='condominium'),
     path('luxurious',views.luxurious, name='luxurious'),
 
-    path('create_book/<str:pk>/', views.createBook, name="create_book"),
-    path('update_book/<str:pk>/', views.updateBook, name="update_book"),
-    path('delete_book/<str:pk>/', views.deleteBook, name="delete_book"),
+    path('create_book/<str:id>/', views.createBook, name="create_book"),
+    path('update_book/<str:id>/', views.updateBook, name="update_book"),
+    path('delete_book/<str:id>/', views.deleteBook, name="delete_book"),
 ]
 
 if settings.DEBUG:

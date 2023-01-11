@@ -25,7 +25,7 @@ class Customer(models.Model):
 	fullName = models.CharField(max_length=100, null=True)
 
 	def __str__(self):
-		return self.user
+		return self.fullName
 
 
 class Tag(models.Model):
