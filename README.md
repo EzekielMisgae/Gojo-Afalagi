@@ -39,6 +39,5 @@ Below is a simple flow for the user experience on GoJo_Afalagi:
 
 ## Author
 
-**Salmon:** [Github](https://github.com/ezekielmisgae/)
+**Ezkiel:** [Github](https://github.com/ezekielmisgae/)
 [LinkedIn](https://www.linkedin.com/in/ezekielmisgae)
-

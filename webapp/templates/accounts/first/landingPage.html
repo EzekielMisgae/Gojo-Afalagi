@@ -55,7 +55,7 @@
                         data-aos-delay="200">
                         <div class="icon-box">
 
-                            <h4 class="title"><a href="">Apartment</a></h4>
+                            <h4 class="title"><a href="{% url 'login' %}">Apartment</a></h4>
                             <p class="description">We simplify the process of finding a new apartment by offering
                                 renters the most comprehensive database including detailed and accurate
                                 apartment listings across the country. Our innovative technology includes the
@@ -67,19 +67,22 @@
                         data-aos-delay="300">
                         <div class="icon-box">
 
-                            <h4 class="title"><a href="">House</a></h4>
+                            <h4 class="title"><a href="{% url 'login' %}">House</a></h4>
                             <p class="description">If you're looking for houses for rent, Gojo Afalagi features
-                                available listings in every corner of the country. We make the process easy and straightforward
-                                with filters or tags that can narrow down your search by region, city, and kebele. Each of
+                                available listings in every corner of the country. We make the process easy and
+                                straightforward
+                                with filters or tags that can narrow down your search by region, city, and kebele. Each
+                                of
                                 the homes for rent features a detailed...</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
                         data-aos-delay="400">
                         <div class="icon-box">
-                            <h4 class="title"><a href="">Rooms</a></h4>
+                            <h4 class="title"><a href="{% url 'login' %}">Rooms</a></h4>
                             <p class="description">Depending on what you like or your new room to look like, choose the
-                                available rooms on the filter and narrow down your search to exactly what you want. Renting a room is
+                                available rooms on the filter and narrow down your search to exactly what you want.
+                                Renting a room is
                                 very convenient. You can find rooms in our ountry using GojoAfalagi™...</p>
                         </div>
                     </div>
@@ -87,7 +90,7 @@
                         data-aos-delay="500">
                         <div class="icon-box">
 
-                            <h4 class="title"><a href="">Condominium</a></h4>
+                            <h4 class="title"><a href="{% url 'login' %}">Condominium</a></h4>
                             <p class="description">Find condos for rent & in foreclosure at
                                 GojoAfalagi™. Our Condominium Professionals are ready to help you rent
                                 a condo today. Toggle navigation then search...</p>
@@ -109,36 +112,44 @@
                             <div>
                                 <h4 style="text-align: center">What is GoJo Afalagi?</h4>
                                 <br>
-                                <p>GoJo-Afalagi is a web application that provides users with a platform to easily search for and view available rental properties.
-                                    It allows renters to interact directly with property owners , eliminating the need for intermediaries like brokers. 
-                                    With GoJo-Afalagi, renters can quickly and easily browse through a variety of listings to find a home that meets their needs.</p>
-                                <br>
+                                <div style="margin-left: 11%; margin-right: 11%;">
+                                    <p style="text-align: justify;">GoJo-Afalagi is a web application that provides
+                                        users with a platform to easily
+                                        search for and view available rental properties.
+                                        It allows renters to interact directly with property owners , eliminating the
+                                        need for intermediaries like brokers.
+                                        With GoJo-Afalagi, renters can quickly and easily browse through a variety of
+                                        listings to find a home that meets their needs.
+                                    </p>
+                                    <br>
+                                </div>
+                            </div>
+                            <br>
+                            <div style="margin-left: 10%; margin-right: 10%;">
                                 <h4 style="text-align: center;">What you can do and don't?</h4>
                                 <br>
-                            </div>
-                            <div class="row content">
-                                <div class="col-lg-6">
-                                    <p>Here are the lists you can do if you register.</p>
-                                    <ul style="list-style-type: none;">
-                                        <li><i class="ri-check-double-line"></i> Create an account or log in to access the site.</li>
-                                        <li><i class="ri-check-double-line"></i> Search for homes available for rent.</li>
-                                        <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
-                                        <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
-                                    </ul>
-                                    <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
-                                </div>
-                                <div class="col-lg-6 pt-4 pt-lg-0">
-                                    <p>
-                                        Here are the lists you can't do without registering.
-                                    </p>
-                                    <ul>
-                                        <li>access certain features or content without creating an account or logging in
-                                        </li>
-                                        <li>advertise homes for rent if you are not the owner</li>
-                                        <li>access all available rental listings without registering</li>
-                                        <li>post homes using for-tenants account.</li>
-                                    </ul>
-
+                                <div class="row content">
+                                    <div class="col-lg-6">
+                                        <p>Here are the lists you can do if you register.</p>
+                                        <ul style="list-style-type: none;">
+                                            <li><i class="ri-check-double-line"></i> Create an account or log in to access the site.</li>
+                                            <li><i class="ri-check-double-line"></i> Search for homes available for rent.</li>
+                                            <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
+                                            <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
+                                        </ul>
+                                        <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
+                                    </div>
+                                    <div class="col-lg-6 pt-4 pt-lg-0">
+                                        <p>
+                                            Here are the lists you can't do without registering.
+                                        </p>
+                                        <ul>
+                                            <li>access certain features or content without creating an account or logging in</li>
+                                            <li>advertise homes for rent if you are not the owner</li>
+                                            <li>access all available rental listings without registering</li>
+                                            <li>post homes using for-tenants account.</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +159,7 @@
         </div>
     </div>
 </div> <!-- End About Section -->
-
+<br><br><hr>
 
 <footer id="footer"> <!-- ==== Footer start ==== -->
     <div class="footer-top">

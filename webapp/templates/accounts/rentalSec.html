@@ -1,27 +1,6 @@
 {% extends 'accounts/headerFooter.html' %}
 {% block content %}
 {% load static %}
-<br><br><br><br>
-
-<div style="margin-left: 9%; margin-right: 9%;">
-    <h3>Apartments</h3>
-    <p style="text-align: justify;">
-        Simplifying the Apartment Sorting: Introducing GojoAfalagi™ and Plan Commute
-        Finding a new apartment can be a time-consuming and daunting task, but it doesn't have to be.
-        We are excited to introduce our innovative technology that streamlines the apartment search process for renters.
-        Our database offers the most comprehensive and detailed apartment listings across the country,
-        making it easy for renters to find their perfect new home.
-        The GojoAfalagi™ search tool allows users to define their own search areas on a map,
-        making it easy to find apartments in a specific location. The Plan Commute feature takes
-        it a step further, helping renters find rentals in proximity to their work or school, saving
-        time and hassle on daily commutes.
-        With these tools, finding a new apartment has never been easier.
-        Check out our website and try it for yourself!"</p>
-    <br><br>
-    <h4>Apartment list</h4>
-    <br><br>
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -98,44 +77,3 @@
 </style>
 <br><br>
 {% endblock %}
-
-<!-- 
-
-    #{% if list %}
-    <table>
-        <tr>
-            <th>area</th>
-            <th>kebele</th>
-            <th>title</th>
-            <th>price</th>
-            <th>landlordName</th>
-        </tr>
-        <tr>
-            #{% for st in list %}
-            <td>{{st.area}}</td>
-            <td>{{st.kebele}}</td>
-            <td>{{st.title}}</td>
-            <td>{{st.price}}</td>
-            <td>{{st.landlordName}}</td>
-        </tr> -->
-        <!-- #{% endfor %}
-    </table>
-    #{% else %}
-    <h4>No Data</h4>
-    #{% endif %} -->
-
-    <!-- <form>
-        #{% csrf_token %}
-        #{{ form.as_p }}
-        #<h3>{{img_obj.title}}</h3> -->
-        <!-- #<img src="{{ img_obj.image.url}}" alt="uploads" style="max-height:500px">
-    </form>
-    <br><br>
-</div> -->
-
-<!-- <style>
-    th,td {
-        border: 1px black solid;
-    }
-</style> -->
-<!-- #{% endblock %} -->
