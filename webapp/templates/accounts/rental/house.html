@@ -11,38 +11,82 @@
 
     <br><br>
     <h4>Houses list</h4>
+    <br>
+    <h4 style="text-align: center;">Total numbers of compounds uploaded by the Admin are {{houses.count}}!</h4>         
 
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    
+    <body>
+        <div class="parent-card">
+            <div class="card" style="width: 18rem; ">
+                <img style="width:100%;height:100%; margin: 10px auto 20px;
+                            display: block;" src="{% static 'img/compound.jpeg' %}"
+                    alt="AI generated image of a girl searching a house.">
+                <div class="card-body">
+                    <h5 class="card-title">Nice home</h5>
+                    <p class="card-text">This residential complex is located in bahirdar. The offered apartment is on the first floor.</p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-target="#exampleModal">Contact: 902836537</button>
+                    <!-- <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Show contact</a> -->
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img style="width:100%;height:100%; margin: 10px auto 20px;
+                            display: block;" src="{% static 'img/compound.jpeg' %}"
+                    alt="AI generated image of a girl searching a house.">
+                <div class="card-body">
+                    <h5 class="card-title">2 room apartment with balcony</h5>
+                    <p class="card-text">This apartment is rent exclusively to a student with parental sponsorship.</p>
+                    <a href="#" class="btn btn-primary">Contact: 963882573</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem; ">
+                <img style="width:100%;height:100%; margin: 10px auto 20px;
+                            display: block;" src="{% static 'img/compound.jpeg' %}"
+                    alt="AI generated image of a girl searching a house.">
+                <div class="card-body">
+                    <h5 class="card-title">3 Rooms modern Apartment</h5>
+                    <p class="card-text">The old-style apartment sloping ceilings is on the first floor in a two-family house.</p>
+                    <a href="#" class="btn btn-primary">Contact: 78392973</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img style="width:100%;height:100%; margin: 10px auto 20px;
+                            display: block;" src="{% static 'img/compound.jpeg' %}"
+                    alt="AI generated image of a girl searching a house.">
+                <div class="card-body">
+                    <h5 class="card-title">Bright studio ideal for students</h5>
+                    <p class="card-text">Akkn naknj jhjb knafjb njajbc njnjcnj akjihndf.</p>
+                    <a href="#" class="btn btn-primary">Contact: 97353930</a>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+    <script>
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+    </script>
+    
+    <style>
+        .parent-card {
+            margin-top: 10%;
+            margin-left: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+        }
+    
+        .card {
+            margin-right: 20px;
+            width: 18rem;
+        }
+    </style>
     <br><br>
-    {% if list %}
-    <table>
-        <tr>
-            <th>area</th>
-            <th>kebele</th>
-            <th>title</th>
-            <th>price</th>
-            <th>landlordName</th>
-            <th>Image</th>
-        </tr>
-        {% for st in list %}
-        <tr>
-            <td>{{st.area}}</td>
-            <td>{{st.kebele}}</td>
-            <td>{{st.title}}</td>
-            <td>{{st.price}}</td>
-            <td>{{st.landlordName}}</td>
-            <td>{{ image.model_pic.url }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <h4>No Data</h4>
-    {% endif %}
-</div>
-<br><br>
-<style>
-    th,
-    td {
-        border: 1px black solid;
-    }
-</style>
-{% endblock %}
+    {% endblock %}

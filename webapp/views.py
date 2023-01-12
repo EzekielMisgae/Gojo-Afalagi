@@ -70,7 +70,13 @@ def landingPage(request):
 
 @login_required(login_url='login')  # can't access without logging in
 def homePage(request):
-    context = {}
+    houses = House.objects.all()
+    compound = House.objects.filter(housetype="Compound")
+    apartment = House.objects.filter(housetype="Apartment")
+    condominium = House.objects.filter(housetype="Condominium")
+    luxury = House.objects.filter(housetype="Luxury")
+    rooms = House.objects.filter(housetype="Room")
+    context = {'houses':houses, 'compound':compound, 'apartment':apartment, 'condominium':condominium, 'luxury':luxury, 'rooms':rooms}
     return render(request, 'accounts/index.html', context)
 
 ### =======> ///Related to Home and landing Pages///<======== ###
@@ -115,27 +121,10 @@ def aboutme(request):
 
 ### =======> Related to type of house <======= ###
 
+
 @login_required(login_url='login')
 def rentals(request):
-    # customerById = House.objects.get(user=request.title)
-    
-    # form = profileUpdate(instance=customerById)
-    
-    # if request.method == 'POST':
-    #     form = profileUpdate(request.POST, instance=customerById)
-    #     # import pdb; pdb.set_trace()
-    #     if form.is_valid():
-            
-    #         form.save()
-    #         title = form.cleaned_data.get('title')
-
-    #         messages.success(request, 'Account updated successfully for ' + title)
-
-    #         return redirect('rentals')
-    # context = {'form':form, 'customerById':customerById}
-    # return render(request, 'accounts/rentals.html', context)
-
-
+    list = House.objects.all()
     """Process images uploaded by users"""
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -143,33 +132,25 @@ def rentals(request):
             form.save()
             # Get the current instance object to display in the template
             img_obj = form.instance
-            return render(request, 'accounts/rental/apartment.html', {'form': form, 'img_obj': img_obj})
+            return render(request, 'accounts/rental/apartment.html', {'form': form, 'list':list, 'img_obj': img_obj})
     else:
         form = ImageForm()
         # form.save()
     return render(request, 'accounts/rentalSec.html', {'form': form})
 
 
-# @login_required(login_url='login')
-# def rentals(request):
-#     rentals = House.objects.all()
-#     return render(request, 'accounts/rentals.html', {'rentals': rentals})
-
-
 @login_required(login_url='login')
 def house(request):
-    i = House.objects.all(image)
-    
-    houses = House.objects.filter(housetype="Compound")
-    image = House.objects.filter(image)
-    return render(request, 'accounts/rental/house.html', {'houses':houses, 'image':image})
+    houses = House.objects.filter(housetype="House")
+    context = {'houses':houses}
+    return render(request, 'accounts/rental/house.html', context)
 
 
 @login_required(login_url='login')
 def apartment(request):
-    list = House.objects.filter(housetype="Apartment")
-
-    return render(request,'accounts/rental/apartment.html',{'list':list})
+    houses = House.objects.filter(housetype="Apartment")
+    context = {'houses':houses}
+    return render(request,'accounts/rental/apartment.html', context)
 
 
 @login_required(login_url='login')
@@ -215,117 +196,20 @@ def ImageSave(request):
     return render(request, 'accounts/rentals.html', context)
 
 
-def image_upload_view(request):
-    """Process images uploaded by users"""
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            # Get the current instance object to display in the template
-            img_obj = form.instance
-            messages.success(request, 'Image uploaded succefully!')
 
-            return render(request, 'accounts/rentals.html', {'form': form, 'img_obj': img_obj})
-    else:
-        form = ImageForm()
-    return render(request, 'accounts/rentals.html', {'form': form})
+# @login_required(login_url='login')
+# def search(city, numRoom, area, houseType):
+#     houses = House.objects.all()
 
+#     if city:
+#         houses = houses.filter(city=city)
+#     if numRoom:
+#         houses = houses.filter(numRoom=numRoom)
+#     if area:
+#         houses = houses.filter(area=area)
+#     if houseType:
+#         houses = houses.filter(houseType=houseType)
 
-@login_required(login_url='login')
-def search(city, numRoom, area, houseType):
-    houses = House.objects.all()
-
-    if city:
-        houses = houses.filter(city=city)
-    if numRoom:
-        houses = houses.filter(numRoom=numRoom)
-    if area:
-        houses = houses.filter(area=area)
-    if houseType:
-        houses = houses.filter(houseType=houseType)
-
-    return houses
+#     return houses
 
 #### =======> ///Related to customers/// <======== ####
-
-
-
-#### =======> Related to Book <======== ####
-
-# @login_required(login_url='login')
-# @allowed_users
-# def createBook(request, id):
-#     # extra = 5
-#     BookFormSet = inlineformset_factory(
-#         Customer, Book, fields=('House', 'status',), extra=5)
-#     customers = Customer.objects.get(id=id)
-
-#     # queryset=Book.objects.none()
-#     formset = BookFormSet(queryset=Book.objects.none(), instance=customers)
-
-#     # form = BookForm(initial={'customer': customers})
-#     if request.method == 'POST':
-#         # form = BookForm(request.POST)
-#         formset = BookFormSet(request.POST, instance=customers)
-#         if formset.is_valid():
-#             formset.save()
-#             return redirect('/')
-
-#     context = {'formset': formset}
-#     return render(request, 'accounts/create_book.html', context)
-
-
-# @login_required(login_url='login')
-# @allowed_users
-# def updateBook(request, id):
-#     book = Book.objects.get(id=id)
-#     form = BookForm(instance=book)
-
-#     if request.method == "POST":
-#         form = BookForm(request.POST, instance=book)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('/')
-
-#     context = {'book': book, 'form': form}
-#     return render(request, 'accounts/update_book.html', context)
-
-# @login_required(login_url='login')
-# @allowed_users
-# def deleteBook(request, pk):
-#     book = Book.objects.get(id=pk)
-#     if request.method == "POST":
-#         book.delete()
-#         return redirect('/')
-
-#     context = {'book': book}
-#     return render(request, 'accounts/delete_book.html', context)
-
-### =======> ///Related to Book/// <======== ####
-
-
-# def search(request):
-#     template = loader.get_template('home.html')
-#     context = {}
-#     if request.method == 'GET':
-#         typ = request.GET['type']
-#         q = request.GET['q']
-#         context.update({'type': typ})
-#         context.update({'q':q})
-#         results={}
-#         if typ == 'House' and (bool(House.objects.filter(location=q)) or bool(House.objects.filter(city=q))):
-#             results = House.objects.filter(location=q)
-#             results = results | House.objects.filter(city=q)
-#         elif typ == 'Apartment'  and (bool(Room.objects.filter(location=q)) or bool(House.objects.filter(city=q))):
-#             results = Room.objects.filter(location=q)
-#             results = results | Room.objects.filter(city=q)
-
-        
-#         if bool(results)== False:
-#             print("messages")
-#             messages.success(request, "No matching results for your query..")
-
-#         result = [results, len(results)]
-#         context.update({'result': result})
-
-#     return HttpResponse(template.render(context, request))
