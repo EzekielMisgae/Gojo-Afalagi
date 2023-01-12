@@ -141,9 +141,8 @@ def rentals(request):
 
 @login_required(login_url='login')
 def house(request):
-    house = House.objects.filter(housetype='Compound')
-    houses = House.objects.all()
-    context = {'houses':houses, 'house':house}
+    houses = House.objects.filter(housetype='Compound')
+    context = {'houses':houses}
     return render(request, 'accounts/rental/house.html', context)
 
 
