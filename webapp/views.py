@@ -119,8 +119,8 @@ def aboutme(request):
 
 
 
-### =======> Related to type of house <======= ###
 
+### =======> Related to type of house <======= ###
 
 @login_required(login_url='login')
 def rentals(request):
@@ -141,8 +141,9 @@ def rentals(request):
 
 @login_required(login_url='login')
 def house(request):
-    houses = House.objects.filter(housetype="House")
-    context = {'houses':houses}
+    house = House.objects.filter(housetype='Compound')
+    houses = House.objects.all()
+    context = {'houses':houses, 'house':house}
     return render(request, 'accounts/rental/house.html', context)
 
 
