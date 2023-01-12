@@ -1,7 +1,7 @@
 # GoJo_Afalagi
 Alx portfolio project
 
-![GoJo_Afalagi logo](/static/images/gojo.png)
+![GoJo_Afalagi logo](/static/img/gojo.png)
 
 GoJo_Afalagi is a simple web application built with front end (HTML, CSS, Js) and in backend (Python and Django) that allows users/renters to see and search houses and for house owners to post available homes to rent. Users can interact easily with house owners without the interrogation of brokers.
 
@@ -22,13 +22,13 @@ For the front-end, I have used HTML and CSS and added Bootstrap additionally . F
 
 Here we have a diagram that shows the tech stack that make up GoJo_Afalagi:
 
-![Tech stack](/static/images/techstack.png)
+![Tech stack](/static/img/techstack.png)
 
 ## User Experience
 
 Below is a simple flow for the user experience on GoJo_Afalagi:
 
-![User experience](/static/images/user_exp.png)
+![User experience](/static/imag/user_exp.png)
 
 ## Getting Started
 
