@@ -6,17 +6,14 @@
     <div class="col-md">
         <section id="hero" class="d-flex align-items-center">
             <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-                <div class="row justify-content-center">
+                <div style="margin-top: 100px; margin-bottom: 50px;" class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9 text-center">
-                        <br>
-                        <br>
                         <h1>Welcome {{user.username}}!</h1>
                         <h4>We provide homes for tenants</h4>
                     </div>
                 </div>
-                <div>
-                    <img style="width:50%;height:50%; margin: 10px auto 20px;
-                    display: block;" src="{% static 'img/house.png' %}"
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <img style="display: block; width: 70%;" src="{% static 'img/house.png' %}"
                         alt="AI generated image of a girl searching a house.">
                 </div>
                 <div class="row icon-boxes">
@@ -25,6 +22,7 @@
                         <div class="icon-box">
 
                             <h4 class="title"><a href="{% url 'apartment' %}">Apartment</a></h4>
+                            <h4 style="font-size: 15px;" class="title">Available {{apartment.count}}</h4>
                             <p class="description">We simplify the process of finding a new apartment by offering
                                 renters the most comprehensive database including detailed and accurate
                                 apartment listings across the country. Our innovative technology includes the
@@ -37,18 +35,18 @@
                         <div class="icon-box">
 
                             <h4 class="title"><a href="{% url 'house' %}">House</a></h4>
+                            <h4 style="font-size: 15px;" class="title">Available {{houses.count}}</h4>
                             <p class="description">If you're looking for houses for rent, Gojo Afalagi features
                                 available listings in every corner of the country. We make the process easy and
-                                straightforward
-                                with filters or tags that can narrow down your search by region, city, and kebele. Each
-                                of
-                                the homes for rent features a detailed...</p>
+                                straightforward with filters or tags that can narrow down your search by region, city, and kebele. Each
+                                of the homes for rent features a detailed...</p>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in"
                         data-aos-delay="400">
                         <div class="icon-box">
                             <h4 class="title"><a href="{% url 'room' %}">Rooms</a></h4>
+                            <h4 style="font-size: 15px;" class="title">Available {{rooms.count}}</h4>
                             <p class="description">Depending on what you like or your new room to look like, choose the
                                 available rooms on the filter and narrow down your search to exactly what you want.
                                 Renting a room is
@@ -60,6 +58,7 @@
                         <div class="icon-box">
 
                             <h4 class="title"><a href="{% url 'condominium' %}">Condominium</a></h4>
+                            <h4 style="font-size: 15px;" class="title">Available {{condominium.count}}</h4>
                             <p class="description">Find condos for rent & in foreclosure at
                                 GojoAfalagi™. Our Condominium Professionals are ready to help you rent
                                 a condo today. Toggle navigation then search...</p>
@@ -100,14 +99,16 @@
                                         <p><b>Here are the lists you can do if you register.</b></p>
                                         <ul style="list-style-type: none;">
                                             <li><i class="ri-check-double-line"></i> Create an account or log in to access the site.</li>
-                                            <li><i class="ri-check-double-line"></i> Search for homes available for rent.</li>
+                                            <li><i class="ri-check-double-line"></i> See available for rent.</li>
                                             <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.</li>
                                             <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
                                         </ul>
                                         <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
                                     </div>
                                     <div class="col-lg-6 pt-4 pt-lg-0">
-                                       <b> <p>Here are the lists you can't do without registering.</p></b>
+                                        <b>
+                                            <p>Here are the lists you can't do without registering.</p>
+                                        </b>
                                         <ul>
                                             <li>access certain features or content without creating an account or logging in</li>
                                             <li>advertise homes for rent if you are not the owner</li>
@@ -122,19 +123,9 @@
                 </section>
             </div>
         </div>
-        <br><br>
-        <div style="margin-left: 10%;">
-        <h3 style="text-align: left; margin-left: 15%;">Total numbers of Houses uploaded by the admins are {{houses.count}}!</h3>
-        <div style="text-align: left; margin-left: 35%; font-size: 15px;">
-            <p>Total numbers of Apartment {{apartment.count}}!</p>
-            <p>Total numbers of Condominium {{condominium.count}}!</p>
-            <p>Total numbers of Luxurious houses {{luxury.count}}!</p>
-            <p>Total numbers of Compounds {{compound.count}}!</p>
-            <p>Total numbers of Rooms {{rooms.count}}!</p>
-        </div>
-    </div>
     </div>
 </div> <!-- End About Section -->
-<br><br><hr>
+<br><br>
+<hr>
 
 {% endblock %}
