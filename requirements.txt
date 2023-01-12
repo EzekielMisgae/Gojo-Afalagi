@@ -3,6 +3,7 @@ autopep8==2.0.1
 certifi==2022.12.7
 charset-normalizer==2.1.1
 distlib==0.3.6
+setuptools==0.7.3
 dj-database-url==1.2.0
 Django==4.1.5
 django-crispy-forms==1.14.0
@@ -14,9 +15,7 @@ et-xmlfile==1.1.0
 filelock==3.9.0
 gunicorn==20.1.0
 idna==3.4
-mysqlclient==2.1.1
 numpy==1.24.1
-openai==0.25.0
 openpyxl==3.0.10
 pandas==1.5.2
 pandas-stubs==1.5.2.221213
