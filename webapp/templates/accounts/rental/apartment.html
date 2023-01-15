@@ -1,99 +1,44 @@
 {% extends 'accounts/headerFooter.html' %}
 {% block content %}
 {% load static %}
-<br><br><br><br>
 
-<div style="margin-left: 9%; margin-right: 9%;">
+<div style="margin-top: 10%; margin-left: 9%; margin-right: 9%;">
     <h3>Apartments</h3>
     <p style="text-align: justify;">
-        Simplifying the Apartment Sorting: Introducing GojoAfalagi™ and Plan Commute
-        Finding a new apartment can be a time-consuming and daunting task, but it doesn't have to be.
-        We are excited to introduce our innovative technology that streamlines the apartment search process for renters.
-        Our database offers the most comprehensive and detailed apartment listings across the country,
-        making it easy for renters to find their perfect new home.
-        The GojoAfalagi™ search tool allows users to define their own search areas on a map,
-        making it easy to find apartments in a specific location. The Plan Commute feature takes
-        it a step further, helping renters find rentals in proximity to their work or school, saving
-        time and hassle on daily commutes.
-        With these tools, finding a new apartment has never been easier.
-        Check out our website and try it for yourself!"</p>
-    <br><br>
-    <h4>Apartment list</h4>
-    <br>
-    <h4 style="text-align: center;">Total numbers of apartments uploaded by the Admin are {{houses.count}}!</h4>         
+        This apartment building is a modern and sleek structure, boasting clean lines and a minimalist design. The
+        building is located in a prime location, with easy access to public transportation, shopping, and dining
+        options. The units within the building are spacious and well-appointed, featuring large windows that allow for
+        plenty of natural light to flood the space. The apartments are equipped with all of the necessary amenities,
+        including a fully-equipped kitchen, comfortable bedrooms, and a balcony or terrace for outdoor living. The
+        building also features a variety of amenities for residents to enjoy, including a fitness center, a community
+        room, and a rooftop terrace. Overall, this apartment building is the perfect choice for those looking for a
+        stylish and convenient living space in the heart of the city.</p>
+</div>
+<h4 style="margin: 2% 0% 2% 5%; display: block;">List of Apartments for Rent</h4>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="parent-card">
-        <div class="card" style="width: 18rem; ">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/apartment.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">Nice home</h5>
-                <p class="card-text">This residential complex is located in bahirdar. The offered apartment is on the first floor.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-target="#exampleModal">Show contact</button>
-                <!-- <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Show contact</a> -->
+<div class="container">
+    <div class="row">
+        {% for house in houses %}
+        <div class="col-3">
+            <div class="card" style="width: 18rem; ">
+                <img style="width:100%; height:100%;" src="{{ house.image.url }}" alt="House Photo" />
+                <div class="card-body">
+                    <h5 class="card-title"><a>{{ house.title }}</a></h5>
+                    <p class="card-text">{{ house.bedrooms }} Bed Rooms</p>
+                    <p class="card-text">{{ house.rental_price }} Birr</p>
+                    <a href="{% url 'house_detail' house.id %}">Detail</a>
+                </div>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/apartment.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">2 room apartment with balcony</h5>
-                <p class="card-text">This apartment is rent exclusively to a student with parental sponsorship.</p>
-                <a href="#" class="btn btn-primary">Show contact</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem; ">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/apartment.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">3 Rooms modern Apartment</h5>
-                <p class="card-text">The old-style apartment sloping ceilings is on the first floor in a two-family house.</p>
-                <a href="#" class="btn btn-primary">Show contact</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/apartment.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">Bright studio ideal for students</h5>
-                <p class="card-text">Akkn naknj jhjb knafjb njajbc njnjcnj akjihndf.</p>
-                <a href="#" class="btn btn-primary">Show contact</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
-</body>
-
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
-</script>
+</div>
 
 <style>
-    .parent-card {
-        margin-top: 10%;
-        margin-left: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: left;
-    }
-
     .card {
         margin-right: 20px;
         width: 18rem;
     }
 </style>
-<br><br>
+
 {% endblock %}

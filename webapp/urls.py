@@ -2,6 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .views import house_list, house_detail, house_create
 
 
 urlpatterns = [
@@ -17,19 +18,15 @@ urlpatterns = [
     path('aboutme',views.aboutme, name='aboutme'),
     path('profile',views.profile, name='profile'),
 
-    path('rentals',views.rentals, name='rentals'),
+    path('<int:pk>/', house_detail, name='house_detail'),
+    path('create/', house_create, name='house_create'),
 
-    path('house',views.house, name='house'),
+    path('compound',views.compound, name='compound'),
     path('apartment',views.apartment, name='apartment'),
     path('room',views.room, name='room'),
     path('condominium',views.condominium, name='condominium'),
     path('luxurious',views.luxurious, name='luxurious'),
-
-    # path('create_book/<str:id>/', views.createBook, name="create_book"),
-    # path('update_book/<str:id>/', views.updateBook, name="update_book"),
-    # path('delete_book/<str:id>/', views.deleteBook, name="delete_book"),
 ]
 
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -22,7 +22,6 @@
                         <div class="icon-box">
 
                             <h4 class="title"><a href="{% url 'apartment' %}">Apartment</a></h4>
-                            <h4 style="font-size: 15px;" class="title">Available {{apartment.count}}</h4>
                             <p class="description">We simplify the process of finding a new apartment by offering
                                 renters the most comprehensive database including detailed and accurate
                                 apartment listings across the country. Our innovative technology includes the
@@ -34,8 +33,7 @@
                         data-aos-delay="300">
                         <div class="icon-box">
 
-                            <h4 class="title"><a href="{% url 'house' %}">House</a></h4>
-                            <h4 style="font-size: 15px;" class="title">Available {{house.count}}</h4>
+                            <h4 class="title"><a href="{% url 'compound' %}">House</a></h4>
                             <p class="description">If you're looking for houses for rent, Gojo Afalagi features
                                 available listings in every corner of the country. We make the process easy and
                                 straightforward with filters or tags that can narrow down your search by region, city,
@@ -47,7 +45,6 @@
                         data-aos-delay="400">
                         <div class="icon-box">
                             <h4 class="title"><a href="{% url 'room' %}">Rooms</a></h4>
-                            <h4 style="font-size: 15px;" class="title">Available {{rooms.count}}</h4>
                             <p class="description">Depending on what you like or your new room to look like, choose the
                                 available rooms on the filter and narrow down your search to exactly what you want.
                                 Renting a room is
@@ -59,7 +56,6 @@
                         <div class="icon-box">
 
                             <h4 class="title"><a href="{% url 'condominium' %}">Condominium</a></h4>
-                            <h4 style="font-size: 15px;" class="title">Available {{condominium.count}}</h4>
                             <p class="description">Find condos for rent & in foreclosure at
                                 GojoAfalagi™. Our Condominium Professionals are ready to help you rent
                                 a condo today. Toggle navigation then search...</p>
@@ -90,38 +86,6 @@
                                         With GoJo-Afalagi, renters can quickly and easily browse through a variety of
                                         listings to find a home that meets their needs.
                                     </p>
-                                    <br>
-                                </div>
-                            </div>
-                            <br>
-                            <div style="margin-left: 10%; margin-right: 10%;">
-                                <h4 style="text-align: center;">What you can do and don't?</h4>
-                                <br>
-                                <div class="row content">
-                                    <div class="col-lg-6">
-                                        <p><b>Here are the lists you can do if you register.</b></p>
-                                        <ul style="list-style-type: none;">
-                                            <li><i class="ri-check-double-line"></i> Create an account or log in to
-                                                access the site.</li>
-                                            <li><i class="ri-check-double-line"></i> See available for rent.</li>
-                                            <li><i class="ri-check-double-line"></i> Advertise your own homes for rent.
-                                            </li>
-                                            <li><i class="ri-check-double-line"></i> Modify your rental listings.</li>
-                                        </ul>
-                                        <a href="{% url 'login' %}" class="btn-learn-more">Learn More</a>
-                                    </div>
-                                    <div class="col-lg-6 pt-4 pt-lg-0">
-                                        <b>
-                                            <p>Here are the lists you can't do without registering.</p>
-                                        </b>
-                                        <ul>
-                                            <li>access certain features or content without creating an account or
-                                                logging in</li>
-                                            <li>advertise homes for rent if you are not the owner</li>
-                                            <li>access all available rental listings without registering</li>
-                                            <li>post homes using for-tenants account.</li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +93,39 @@
                 </section>
             </div>
         </div>
+        <div class="text-center">
+            <a href="{% url 'house_create' %}" class="btn-get-started scrollto">Post homes (Staff Only)</a>
+        </div>
+        <div>
+            <h1 style="margin: 2% 0% 2% 5%; text-align: center;">List of Houses for Rent</h1>
+            <div class="container">
+                <div class="row">
+                    {% for house in houses %}
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem; ">
+                            <img style="width:100%; height:100%;" src="{{ house.image.url }}" alt="House Photo" />
+                            <div class="card-body">
+                                <h5 class="card-title"><a>{{ house.title }}</a></h5>
+                                <p class="card-text">{{ house.bedrooms }} Bed Rooms</p>
+                                <p class="card-text">{{ house.rental_price }} Birr</p>
+                                <a href="{% url 'house_detail' house.id %}">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+<style>
+    .card {
+        margin-right: 20px;
+        width: 18rem;
+    }
+</style>
+</div>
 </div> <!-- End About Section -->
 <br><br>
 <hr>

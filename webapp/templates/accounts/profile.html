@@ -1,8 +1,7 @@
 {% extends 'accounts/headerFooter.html' %}
 {% block content %}
-{% load static %}
 
-<br><br><br>
+{% load static %}
 <div style="margin: 0% -20% 0% 0%; display: block;">
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
@@ -17,32 +16,30 @@
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Profile Settings</h4>
+                        <h4 class="text-right">Profile update Settings</h4>
                     </div>
                     <form method="POST" action="">
                         {% csrf_token %}
                         <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">Full Name</label>
+                            <div class="col-md-6"><label>Full Name</label>
                                 {{form.fullName}}
                             </div>
-                            <div class="col-md-12"><label class="labels">Phone Number</label>
+                            <div class="col-md-12"><label>Phone Number</label>
                                 {{form.phone}}
                             </div>
-                            <div class="col-md-12"><label class="labels">Kebele ID</label>
+                            <div class="col-md-12"><label>Kebele ID</label>
                                 {{form.kebeleID}}
                             </div>
-                            <div class="col-md-12"><label class="labels">Job</label>
+                            <div class="col-md-12"><label>Job</label>
                                 {{form.job}}
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-6"><label class="labels">City</label>
-                                <!-- <input type="text" class="form-control" placeholder="City" value=""> -->
+                            <div class="col-md-6"><label>City</label>
                                 {{form.city}}
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                            <!-- <button class="btn btn-primary profile-button" type="button">Save Profile</button> -->
                             <input class="btn btn-primary profile-button" type="submit" value="Save Profile">
                         </div>
                     </form>
@@ -59,7 +56,7 @@
     //Query All input fields
     var form_fields = document.getElementsByTagName('input')
     form_fields[1].placeholder = 'Username';
-    form_fields[2].placeholder = 'Enter Phone bumber';
+    form_fields[2].placeholder = 'Enter Phone Number';
     form_fields[3].placeholder = 'Kebele ID';
     form_fields[4].placeholder = 'Job...';
     form_fields[5].placeholder = 'City';

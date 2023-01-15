@@ -1,85 +1,42 @@
 {% extends 'accounts/headerFooter.html' %}
-{% block content %}
 {% load static %}
-<br><br><br><br>
-<div style="margin-left: 9%; margin-right: 9%;">
-    <p style="text-align: justify;">
-    <h4>Luxury homes list</h4>
-    <br><br>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block content %}
 
-<body>
-    <div class="parent-card">
-        <div class="card" style="width: 18rem; ">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/luxury.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">Nice home</h5>
-                <p class="card-text">This residential complex is located in bahirdar. The offered apartment is on the first floor.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-bs-target="#exampleModal">Contact: 983864763</button>
-                <!-- <a href="#" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Show contact</a> -->
+<div style="margin-top: 10%; margin-left: 9%; margin-right: 9%;">
+    <h3>Luxurious</h3>
+    <p style="text-align: justify;">
+        A luxury house is a grand and opulent property that is designed with the finest materials and features. It
+        typically includes large open spaces, high ceilings, and a wide range of amenities such as a swimming pool, spa,
+        and multiple bedrooms and bathrooms. Luxury houses are often located in exclusive neighborhoods and offer
+        breathtaking views, state-of-the-art appliances and technology, and a sophisticated design aesthetic. They are
+        intended for the high-end market and are meant to provide ultimate comfort, elegance and high standard of
+        living.
+    </p>
+    <h4 style="margin: 2% 0% 2% 5%; display: block;">List of Luxury Houses for Rent</h4>
+
+    <div class="container">
+        <div class="row">
+            {% for house in houses %}
+            <div class="col-3">
+                <div class="card" style="width: 18rem; ">
+                    <img style="width:100%; height:100%;" src="{{ house.image.url }}" alt="House Photo" />
+                    <div class="card-body">
+                        <h5 class="card-title"><a>{{ house.title }}</a></h5>
+                        <p class="card-text">{{ house.bedrooms }} Bed Rooms</p>
+                        <p class="card-text">{{ house.rental_price }} Birr</p>
+                        <a href="{% url 'house_detail' house.id %}">Detail</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/luxury2.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">2 room apartment with balcony</h5>
-                <p class="card-text">This apartment is rent exclusively to a student with parental sponsorship.</p>
-                <a href="#" class="btn btn-primary">Contact: 97263617</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem; ">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/luxury.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">3 Rooms modern Apartment</h5>
-                <p class="card-text">The old-style apartment sloping ceilings is on the first floor in a two-family house.</p>
-                <a href="#" class="btn btn-primary">Contact: 093764784</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img style="width:100%;height:100%; margin: 10px auto 20px;
-                            display: block;" src="{% static 'img/luxury2.jpeg' %}"
-                alt="AI generated image of a girl searching a house.">
-            <div class="card-body">
-                <h5 class="card-title">Bright studio ideal for students</h5>
-                <p class="card-text">Akkn naknj jhjb knafjb njajbc njnjcnj akjihndf.</p>
-                <a href="#" class="btn btn-primary">Contact: 092092928</a>
-            </div>
+            {% endfor %}
         </div>
     </div>
-</body>
 
-</div>
-<br><br>
-<script>
-    $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-    })
-</script>
 
-<style>
-    .parent-card {
-        margin-top: 10%;
-        margin-left: 5%;
-        display: flex;
-        align-items: center;
-        justify-content: left;
-    }
-
-    .card {
-        margin-right: 20px;
-        width: 18rem;
-    }
-</style>
-<br><br>
-{% endblock %}
+    <style>
+        .card {
+            margin-right: 20px;
+            width: 18rem;
+        }
+    </style>
+    {% endblock %}

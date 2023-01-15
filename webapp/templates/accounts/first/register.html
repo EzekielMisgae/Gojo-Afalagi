@@ -31,10 +31,9 @@
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
       </div>
-    </header><!-- End Header -->
-    
-  <section id="hero" class="d-flex align-items-center">
+    </header><!-- End Header -->  
 <body>
+  <section id="hero" class="d-flex align-items-center">
   <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
       <div class="user_card">
@@ -44,6 +43,13 @@
         <div class="d-flex justify-content-center form_container">
           <form method="POST" action="">
             {% csrf_token %}
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i></span>
+              </div>
+              {{form.fullName}}
+            </div>
             <div class="input-group mb-3">
               <div class="input-group-append">
                 <span class="input-group-text">
@@ -93,10 +99,11 @@
 */
     //Query All input fields
     var form_fields = document.getElementsByTagName('input')
-    form_fields[2].placeholder = 'Username..';
-    form_fields[3].placeholder = 'Email..';
-    form_fields[4].placeholder = 'Enter password...';
-    form_fields[5].placeholder = 'Re-enter Password...';
+    form_fields[2].placeholder = 'Full Name..';
+    form_fields[3].placeholder = 'Username';
+    form_fields[4].placeholder = 'Email..';
+    form_fields[5].placeholder = 'Enter password..';
+    form_fields[6].placeholder = 'Re-enter Password..';
     for (var field in form_fields) {
       form_fields[field].className += ' form-control'
     }

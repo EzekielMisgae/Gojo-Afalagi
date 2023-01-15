@@ -23,6 +23,7 @@ class Customer(models.Model):
 	job = models.CharField(max_length=255, null=True)
 	fullName = models.CharField(max_length=100, null=True)
 
+    
 	def __str__(self):
 		return self.fullName
 
@@ -42,11 +43,7 @@ class House(models.Model):
         ('Harar', 'Harar'),
         ('Mekele', 'Mekele'),
         ('Other', 'Other'),
-    )
-    HOUSESTATUS = (
-        ('Available', 'Available'),
-        ('Rented', 'Rented')
-    )
+        )
     HOUSETYPE = (
         ('Apartment', 'Apartment'),
         ('Compound', 'Compound'),
@@ -54,40 +51,17 @@ class House(models.Model):
         ('Condominium', 'Condominium'),
         ('Luxury', 'Luxury')
     )
-    housetype = models.CharField(
-        max_length=255, default='Room', choices=HOUSETYPE, null=True)
-    numRoom = models.IntegerField(null=True)
-    kebele = models.IntegerField(null=True)
-    city = models.CharField(max_length=100, choices=CITY,
-                            default='Other', null=False)
-    area = models.FloatField(null=True)
-    price = models.IntegerField(null=True)
-    floor = models.IntegerField(null=True, default=0)
-    landlordName = models.CharField(max_length=255, null=True)
-    landlordPhone = models.CharField(max_length=20, null=True)
-    houseStatus = models.CharField(
-        max_length=100, default='Available', choices=HOUSESTATUS, null=False)
-    title = models.CharField(max_length=255, null=True)
-    image = models.ImageField(upload_to='images/Uploads/',
-                            default="images/Uploads/image-placeholder-500x500.jpg", blank=True)
+    title = models.CharField(max_length=255)
+    owner = models.CharField(max_length=255)
+    description = models.TextField(max_length=255, null=False)
+    house_type = models.CharField(max_length=255, default='Room', choices=HOUSETYPE, null=True)
+    city = models.CharField(max_length=100, choices=CITY, default='Other', null=False)
+    bedrooms = models.IntegerField(blank=True, null=False)
+    rental_price = models.DecimalField(max_digits=8, decimal_places=2, null=False)
+    image = models.ImageField(upload_to='houses/')
     tags = models.ManyToManyField(Tag)
+    upload_date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.housetype
-
-    @property
-    def imageURL(self):
-        try:
-            url = self.featured.url
-        except:
-            url = ''
-        print('URL:', url)
-        return url
-
-
-class Image(models.Model):
-    title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='images')
 
     def __str__(self):
         return self.title
