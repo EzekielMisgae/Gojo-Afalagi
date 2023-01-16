@@ -1,58 +1,38 @@
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
-from django.forms import inlineformset_factory
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import Group
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from .models import *
-from .forms import BookForm, CreateUserForm, CustomerForm, ImageForm, profileUpdate
-from .filters import BookFilter
-from .decorators import unauthenticated_user, allowed_users, landlord_only
-
+from .forms import CreateUserForm, profileUpdate
+from .forms import HouseForm
+from .decorators import unauthenticated_user, staff_only
 
 
 ### =======> Related Login and Registration Pages<======== ###
 
-@unauthenticated_user
 def registerPage(request):
-	form = CreateUserForm()
-	if request.method == 'POST':
-		form = CreateUserForm(request.POST)
-		if form.is_valid():
-			user = form.save()
-			username = form.cleaned_data.get('username')
-			# group = Group.objects.get(name='customer')
-			# user.groups.add(group)
-			#Added username because of error returning customer name if not added
-			Customer.objects.create(
-				user=user,
-				fullName=user.username,
-				)
-			messages.success(request, 'Account was created for ' + username)
-			return redirect('login')
-	context = {'form':form}
-	return render(request, 'accounts/first/register.html', context)
-
-
-# @unauthenticated_user
-# def registerPage(request):
-#     form = CreateUserForm()
-#     if request.method == 'POST':
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-
-#             messages.success(request, 'Account was created for ' + username)
-
-#             return redirect('login')
-#     context = {'form': form}
-#     return render(request, 'accounts/first/register.html', context)
-
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            fullName = form.cleaned_data.get('fullName')
+            # group = Group.objects.get(name='customer')
+            # user.groups.add(group)
+            #Added fullName 
+            Customer.objects.create(
+                user=user,
+                fullName=fullName,
+                )
+            messages.success(request, 'Account was created for ' + username)
+            return redirect('login')
+    context = {'form':form}
+    return render(request, 'accounts/first/register.html', context)
 
 @unauthenticated_user  # if users logged in already & try to access it will redirect them
 def loginPage(request):
@@ -68,7 +48,6 @@ def loginPage(request):
             return redirect('login')
     context = {}
     return render(request, 'accounts/first/login.html', context)
-
 
 def logoutUser(request):
     logout(request)
@@ -87,34 +66,31 @@ def landingPage(request):
 
 @login_required(login_url='login')  # can't access without logging in
 def homePage(request):
-    context = {}
-    return render(request, 'accounts/index.html', context)
+    houses = House.objects.all()
+    return render(request, 'accounts/index.html', {'houses': houses})
 
 ### =======> ///Related to Home and landing Pages///<======== ###
 
 
 
 ### =======> Related to Customer Profile and About <======== ###
-
 @login_required(login_url='login')
 def profile(request):
-    customerById = Customer.objects.get(user=request.user)
-    form = profileUpdate(instance=customerById)
-    if request.method == 'POST':
-        form = profileUpdate(request.POST, instance=customerById)
-        # import pdb; pdb.set_trace()
-        if form.is_valid():
-            
-            form.save()
-            name = form.cleaned_data.get('fullName')
-
-            messages.success(request, 'Account updated successfully for ' + name)
-
-            return redirect('profile')
-    context = {'form':form}
-    return render(request, 'accounts/profile.html', context)
-
-
+    user = request.user
+    if user.is_authenticated:
+        customer = get_object_or_404(Customer, user=user)
+        form = profileUpdate(instance=customer)
+        if request.method == 'POST':
+            form = profileUpdate(request.POST, request.FILES, instance=customer)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile updated successfully')
+                return redirect('profile')
+        context = {'form':form, 'customer':customer}
+        return render(request, 'accounts/profile.html', context)
+    else:
+        messages.warning(request, 'You need to login first')
+        return redirect('login')
 
 def about(request):
     context = {}
@@ -131,140 +107,62 @@ def aboutme(request):
 ### =======> Related to type of house <======= ###
 
 @login_required(login_url='login')
-def rentals(request):
-    rentals = House.objects.all()
-    return render(request, 'accounts/rentals.html', {'rentals': rentals})
-
-
-@login_required(login_url='login')
-def house(request):
-    houses = House.objects.filter(housetype="house")
-    return render(request, 'accounts/rental/house.html', {'houses':houses})
-
+def compound(request):
+    houses = House.objects.filter(house_type='Compound')
+    context = {'houses': houses}
+    return render(request, 'accounts/rental/compound.html', context)
 
 @login_required(login_url='login')
 def apartment(request):
-	apartments = House.objects.filter(housetype="apartment")
-	return render(request, 'accounts/rental/apartment.html', {'apartments':apartments})
-
+    houses = House.objects.filter(house_type='Apartment')
+    context = {'houses': houses}
+    return render(request,'accounts/rental/apartment.html', context)
 
 @login_required(login_url='login')
 def room(request):
-	rooms = House.objects.filter(housetype="room")
-	return render(request, 'accounts/rental/room.html', {'rooms':rooms})
-
+    houses = House.objects.filter(house_type='Room')
+    context = {'houses': houses}
+    return render(request,'accounts/rental/room.html', context)
 
 @login_required(login_url='login')
 def condominium(request):
-    condos = House.objects.filter(housetype="condominium")
-    totalCondo = condos.count()
-    rented = condos.filter(houseStatus='Rented')
-    available = condos.filter(houseStatus='Available')
-    context = {'rented': rented, 'available': available, 'totalCondo': totalCondo}
-    return render(request, 'accounts/rental/condominium.html', context)
-
+    houses = House.objects.filter(house_type='Condominium')
+    context = {'houses': houses}
+    return render(request,'accounts/rental/condominium.html', context)
 
 @login_required(login_url='login')
 def luxurious(request):
-    luxury = House.objects.filter(housetype="luxury")
-    totalLux = luxury.count()
-    rented = luxury.filter(houseStatus='Rented')
-    available = luxury.filter(houseStatus='Available')
-    context = {'rented': rented, 'available': available, 'totalLux': totalLux,}
-    return render(request, 'accounts/rental/luxurious.html', context)
-
+    houses = House.objects.filter(house_type='Luxury')
+    context = {'houses': houses}
+    return render(request,'accounts/rental/luxurious.html', context)
 
 ### =======> ///Related to type of house/// <======= ###
 
 
 
-#### =======> Related to customers <======== ####
-
-
-def image_upload_view(request):
-    """Process images uploaded by users"""
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            # Get the current instance object to display in the template
-            img_obj = form.instance
-            messages.success(request, 'Image uploaded succefully!')
-
-            return render(request, 'accounts/rentals.html', {'form': form, 'img_obj': img_obj})
-    else:
-        form = ImageForm()
-    return render(request, 'accounts/rentals.html', {'form': form})
-
-
+### =======> Related to House upload/// <======= ###
 @login_required(login_url='login')
-def search(city, numRoom, area, houseType):
+def house_list(request):
     houses = House.objects.all()
-
-    if city:
-        houses = houses.filter(city=city)
-    if numRoom:
-        houses = houses.filter(numRoom=numRoom)
-    if area:
-        houses = houses.filter(area=area)
-    if houseType:
-        houses = houses.filter(houseType=houseType)
-
-    return houses
-
-#### =======> ///Related to customers/// <======== ####
-
-
-
-#### =======> Related to Book <======== ####
+    return render(request, 'accounts/list.html', {'houses': houses})
 
 @login_required(login_url='login')
-@allowed_users
-def createBook(request, id):
-    # extra = 5
-    BookFormSet = inlineformset_factory(
-        Customer, Book, fields=('House', 'status',), extra=5)
-    customers = Customer.objects.get(id=id)
+def house_detail(request, pk):
+    house = get_object_or_404(House, pk=pk)
+    return render(request, 'accounts/detail.html', {'house': house})
 
-    # queryset=Book.objects.none()
-    formset = BookFormSet(queryset=Book.objects.none(), instance=customers)
-
-    # form = BookForm(initial={'customer': customers})
+@login_required(login_url='login')
+@staff_only
+def house_create(request):
     if request.method == 'POST':
-        # form = BookForm(request.POST)
-        formset = BookFormSet(request.POST, instance=customers)
-        if formset.is_valid():
-            formset.save()
-            return redirect('/')
-
-    context = {'formset': formset}
-    return render(request, 'accounts/create_book.html', context)
-
-
-@login_required(login_url='login')
-@allowed_users
-def updateBook(request, id):
-    book = Book.objects.get(id=id)
-    form = BookForm(instance=book)
-
-    if request.method == "POST":
-        form = BookForm(request.POST, instance=book)
+        form = HouseForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/')
 
-    context = {'book': book, 'form': form}
-    return render(request, 'accounts/update_book.html', context)
+            return redirect('house_list')
+    else:
+        form = HouseForm()
+        context = {'form': form}
+    return render(request, 'accounts/form.html', context)
 
-@login_required(login_url='login')
-@allowed_users
-def deleteBook(request, pk):
-    book = Book.objects.get(id=pk)
-    if request.method == "POST":
-        book.delete()
-        return redirect('/')
-
-    context = {'book': book}
-    return render(request, 'accounts/delete_book.html', context)
-
-### =======> ///Related to Book/// <======== ####
+### =======> ///Related to House upload/// <======= ###

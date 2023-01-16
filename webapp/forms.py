@@ -5,30 +5,29 @@ from django import forms
 
 from .models import *
 
+
 class CustomerForm(ModelForm):
 	class Meta:
 		model = Customer
 		fields = '__all__'
 		exclude = ['user']
 
-class BookForm(ModelForm):
-	class Meta:
-		model = Book
-		fields = '__all__'
 
 class CreateUserForm(UserCreationForm):
-	class Meta:
-		model = User
-		fields = ['username', 'email', 'password1', 'password2']
+    fullName = forms.CharField(max_length=255)
+    class Meta:
+        model = User
+        fields = ['username', 'fullName', 'email', 'password1', 'password2']
 
-class profileUpdate(ModelForm):
+
+class profileUpdate(forms.ModelForm):
     class Meta:
         model = Customer
-        fields = ['fullName', 'city', 'phone', 'kebeleID', 'job']
+        fields = ['fullName', 'phone', 'kebeleID', 'job', 'city']
 
 
-class ImageForm(forms.ModelForm):
+class HouseForm(forms.ModelForm):
     """Form for the image model"""
     class Meta:
-        model = Image
-        fields = ('title', 'image')
+        model = House
+        fields = ('__all__')

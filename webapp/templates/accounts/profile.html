@@ -1,90 +1,49 @@
 {% extends 'accounts/headerFooter.html' %}
 {% block content %}
 
-
-<br><br><br><br>
-<!-- <div class="row">
-	<div class="col-md-3">
-		<div class="card card-body">
-			<a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a>
-			<hr>
-			<h3 style="text-align: center">Account Settings</h3>
-			<hr>
-		
-		</div>
-	</div>
-	<div class="col-md-9">
-		<div class="card card-body">
-			
-			<form method="POST" action="" enctype="multipart/form-data">
-				{% csrf_token %}
-				{{form.as_p}}
-		
-			<input class="btn btn-primary" type="submit" name="Update Information">
-			</form>
-		</div>
-	</div>
-</div>
- -->
-
-
-<div class="container rounded bg-white mt-5 mb-5">
-    <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                    width="150px"
-                    src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-                    class="font-weight-bold">{{user.user}}</span>
+{% load static %}
+<div style="margin: 0% -20% 0% 0%; display: block;">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px"
+                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">{{user.username}}</span>
                     <span class="text-black-50">{{user.email}}</span>
+                </div>
             </div>
-        </div>
-        <div class="col-md-5 border-right">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Profile Settings</h4>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile update Settings</h4>
+                    </div>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label>Full Name</label>
+                                {{form.fullName}}
+                            </div>
+                            <div class="col-md-12"><label>Phone Number</label>
+                                {{form.phone}}
+                            </div>
+                            <div class="col-md-12"><label>Kebele ID</label>
+                                {{form.kebeleID}}
+                            </div>
+                            <div class="col-md-12"><label>Job</label>
+                                {{form.job}}
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label>City</label>
+                                {{form.city}}
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <input class="btn btn-primary profile-button" type="submit" value="Save Profile">
+                        </div>
+                    </form>
                 </div>
-                <form method="POST" action="">
-                    {% csrf_token %}
-
-                    <div class="input-group mb-3">
-                      <div class="input-group-append">
-                        <span class="input-group-text">
-                          <i class="fas fa-user"></i></span>
-                      </div>
-                      {{form.fullName}}
-                    </div>
-
-                    <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">Full Name</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your name" value=""/> -->
-                           
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Phone Number</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your Phone Number" value=""> -->
-                            {{form.phone}}
-                        </div>
-                        <div class="col-md-12"><label class="labels">Kebele ID</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your Kebele ID" value=""> -->
-                            {{form.kebeleID}}
-                        </div>
-                        <div class="col-md-12"><label class="labels">Job</label>
-                            <!-- <input type="text" class="form-control" placeholder="Please enter your Job" value=""> -->
-                            {{form.job}}
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-md-6"><label class="labels">City</label>
-                            <!-- <input type="text" class="form-control" placeholder="City" value=""> -->
-                            {{form.city}}
-                        </div>
-                    </div>
-                <div class="mt-5 text-center">
-                    <!-- <button class="btn btn-primary profile-button" type="button">Save Profile</button> -->
-                    <input class="btn btn-primary profile-button"  type="submit" value="Save Profile">
-                </div>
-                </form>
             </div>
         </div>
     </div>
@@ -96,27 +55,25 @@
     */
     //Query All input fields
     var form_fields = document.getElementsByTagName('input')
-    form_fields[2].placeholder = 'Username..';
-    form_fields[3].placeholder = 'Email..';
-    form_fields[4].placeholder = 'Enter password...';
-    form_fields[5].placeholder = 'Re-enter Password...';
-    form_fields[6].placeholder = 'Enter password...';
-    form_fields[7].placeholder = 'Re-enter Password...';
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Enter Phone Number';
+    form_fields[3].placeholder = 'Kebele ID';
+    form_fields[4].placeholder = 'Job...';
+    form_fields[5].placeholder = 'City';
     for (var field in form_fields) {
-        
+
         form_fields[field].className += ' form-control'
     }
 </script>
 
 
 <style>
-
-	.profile-pic{
-		max-width: 200px;
-		max-height:200px;
-		margin: 0 auto;
-		border-radius: 50%;
-	}
+    .profile-pic {
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
 
 
 

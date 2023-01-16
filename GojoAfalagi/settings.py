@@ -28,8 +28,7 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = [
     '127.0.0.1', 
-    '.herokuapp.com', 
-    '.vercel.app', 
+    '.herokuapp.com',
     '.now.sh',
     ]
 
@@ -43,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'webapp.apps.WebappConfig'
+    'webapp.apps.WebappConfig',
+    'GojoAfalagi',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -131,10 +132,8 @@ STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
 # Base url to serve media files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-# Path where media is stored
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
