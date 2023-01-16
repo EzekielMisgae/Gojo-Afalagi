@@ -88,13 +88,14 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class="text-center">
+                                <a href="{% url 'house_create' %}" class="btn-get-started scrollto">Post homes (Staff
+                                    Only)</a>
+                            </div>
                         </div>
                     </section>
                 </section>
             </div>
-        </div>
-        <div class="text-center">
-            <a href="{% url 'house_create' %}" class="btn-get-started scrollto">Post homes (Staff Only)</a>
         </div>
         <div>
             <h1 style="margin: 2% 0% 2% 5%; text-align: center;">List of Houses for Rent</h1>
@@ -120,6 +121,20 @@
 </div>
 
 <style>
+    .btn-get-started {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        display: inline-block;
+        padding: 14px 50px;
+        border-radius: 5px;
+        transition: 0.5s;
+        margin-top: 30px;
+        color: #fff;
+        background: #2487ce;
+    }
+
     .card {
         margin-right: 20px;
         width: 18rem;
