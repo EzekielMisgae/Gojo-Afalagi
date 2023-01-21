@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from .views import house_detail, house_create, search
+from . import decorators
 
 
 urlpatterns = [
@@ -13,6 +14,7 @@ urlpatterns = [
     path('logout',views.logoutUser, name='logout'),
 
     path('homePage',views.homePage, name='home'),
+    path('unauthorized',decorators.unauthorized, name='unauthorized'),
 
     path('about',views.about, name='about'),
     path('aboutme',views.aboutme, name='aboutme'),

@@ -1,4 +1,5 @@
-{% include 'accounts/links.html' %}
+{% extends 'accounts/headerFooter.html' %}
+{% load static %}
 {% block content %}
 <div style="margin-top: 100px;">
     <form method="get" action="{% url 'search' %}" class="d-flex justify-content-center">
@@ -22,11 +23,11 @@
         </div>
         <div class="form-group">
             <label for="min_price">Min Price:</label>
-            <input type="number" id="min_price" name="min_price" class="form-control" required>
+            <input type="number" id="min_price" name="min_price" min="{{ min_price }}" value="{{ min_price }}" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="max_price">Max Price:</label>
-            <input type="number" id="max_price" name="max_price" class="form-control" required>
+            <input type="number" id="max_price" name="max_price" max="{{ max_price }}" value="{{ max_price }}" class="form-control" required>
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
     </form>

@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 def unauthenticated_user(view_func):
     def wrapper_func(request, *args, **kwargs):
@@ -25,10 +25,13 @@ def allowed_users(allowed_roles=[]):
             return wrapper_func
     return decorator
 
+def unauthorized(request):
+    return render(request, 'accounts/unauthorized.html', {'is_staff': request.user.is_staff})
+
 def staff_only(view_func):
     def wrapper_function(request, *args, **kwargs):
         if request.user.is_staff:
             return view_func(request, *args, **kwargs)
         else:
-            return redirect('home')
+            return unauthorized(request)
     return wrapper_function

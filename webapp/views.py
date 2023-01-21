@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Min, Max
+
 
 # Create your views here.
 from .models import *
@@ -24,15 +26,16 @@ def registerPage(request):
             fullName = form.cleaned_data.get('fullName')
             # group = Group.objects.get(name='customer')
             # user.groups.add(group)
-            #Added fullName 
+            # Added fullName
             Customer.objects.create(
                 user=user,
                 fullName=fullName,
-                )
+            )
             messages.success(request, 'Account was created for ' + username)
             return redirect('login')
-    context = {'form':form}
+    context = {'form': form}
     return render(request, 'accounts/first/register.html', context)
+
 
 @unauthenticated_user  # if users logged in already & try to access it will redirect them
 def loginPage(request):
@@ -49,12 +52,12 @@ def loginPage(request):
     context = {}
     return render(request, 'accounts/first/login.html', context)
 
+
 def logoutUser(request):
     logout(request)
     return redirect('landingPage')
 
 ### =======> ///Related Login and Registration Pages///<======== ###
-
 
 
 ### =======> Related to Home and landing Pages<======== ###
@@ -64,13 +67,13 @@ def landingPage(request):
     context = {}
     return render(request, 'accounts/first/landingPage.html', context)
 
+
 @login_required(login_url='login')  # can't access without logging in
 def homePage(request):
     houses = House.objects.all()
     return render(request, 'accounts/index.html', {'houses': houses})
 
 ### =======> ///Related to Home and landing Pages///<======== ###
-
 
 
 ### =======> Related to Customer Profile and About <======== ###
@@ -81,27 +84,29 @@ def profile(request):
         customer = get_object_or_404(Customer, user=user)
         form = profileUpdate(instance=customer)
         if request.method == 'POST':
-            form = profileUpdate(request.POST, request.FILES, instance=customer)
+            form = profileUpdate(
+                request.POST, request.FILES, instance=customer)
             if form.is_valid():
                 form.save()
                 messages.success(request, 'Profile updated successfully')
                 return redirect('profile')
-        context = {'form':form, 'customer':customer}
+        context = {'form': form, 'customer': customer}
         return render(request, 'accounts/profile.html', context)
     else:
         messages.warning(request, 'You need to login first')
         return redirect('login')
 
+
 def about(request):
     context = {}
     return render(request, 'accounts/about.html', context)
+
 
 def aboutme(request):
     context = {}
     return render(request, 'accounts/aboutme.html', context)
 
 ### =======> ///Related to Customer and About/// <======== ###
-
 
 
 ### =======> Related to type of house <======= ###
@@ -112,32 +117,35 @@ def compound(request):
     context = {'houses': houses}
     return render(request, 'accounts/rental/compound.html', context)
 
+
 @login_required(login_url='login')
 def apartment(request):
     houses = House.objects.filter(house_type='Apartment')
     context = {'houses': houses}
-    return render(request,'accounts/rental/apartment.html', context)
+    return render(request, 'accounts/rental/apartment.html', context)
+
 
 @login_required(login_url='login')
 def room(request):
     houses = House.objects.filter(house_type='Room')
     context = {'houses': houses}
-    return render(request,'accounts/rental/room.html', context)
+    return render(request, 'accounts/rental/room.html', context)
+
 
 @login_required(login_url='login')
 def condominium(request):
     houses = House.objects.filter(house_type='Condominium')
     context = {'houses': houses}
-    return render(request,'accounts/rental/condominium.html', context)
+    return render(request, 'accounts/rental/condominium.html', context)
+
 
 @login_required(login_url='login')
 def luxurious(request):
     houses = House.objects.filter(house_type='Luxury')
     context = {'houses': houses}
-    return render(request,'accounts/rental/luxurious.html', context)
+    return render(request, 'accounts/rental/luxurious.html', context)
 
 ### =======> ///Related to type of house/// <======= ###
-
 
 
 ### =======> Related to House upload <======= ###
@@ -146,10 +154,12 @@ def house_list(request):
     houses = House.objects.all()
     return render(request, 'accounts/list.html', {'houses': houses})
 
+
 @login_required(login_url='login')
 def house_detail(request, pk):
     house = get_object_or_404(House, pk=pk)
     return render(request, 'accounts/detail.html', {'house': house})
+
 
 @login_required(login_url='login')
 @staff_only
@@ -168,14 +178,11 @@ def house_create(request):
 ### =======> ///Related to House upload/// <======= ###
 
 
-
-
 ### =======> Related to House Search <======= ###
+
+@login_required(login_url='login')
 def search(request):
     houses = House.objects.all()
-    allhouse = houses.all()
-    cities = House.objects.values_list('city', flat=True).distinct()
-    allcities = cities.all()
     house_types = House.objects.values_list('house_type', flat=True).distinct()
     if 'city' in request.GET and request.GET['city'] != "All":
         city = request.GET['city']
@@ -185,13 +192,18 @@ def search(request):
         house_type = request.GET['house_type']
         if house_type:
             houses = houses.filter(house_type__contains=house_type)
+    min_price = House.objects.aggregate(Min('rental_price'))[
+        'rental_price__min']
+    max_price = House.objects.aggregate(Max('rental_price'))[
+        'rental_price__max']
     if 'min_price' in request.GET:
-        min_price = request.GET['min_price']
-        houses = houses.filter(rental_price__gte=min_price)
+        min_price = request.GET.get('min_price')
     if 'max_price' in request.GET:
-        max_price = request.GET['max_price']
-        houses = houses.filter(rental_price__lte=max_price)
-    context = {'houses': houses, 'allhouse':allhouse, 'cities':cities, 'allcities':allcities, 'house_types':house_types}
-    return render(request, 'accounts/index.html', context)
+        max_price = request.GET.get('max_price')
+    houses = houses.filter(rental_price__gte=min_price,
+                           rental_price__lte=max_price)
+    context = {'houses': houses, 'housess': houses, 'house_types': house_types,
+               'min_price': min_price, 'max_price': max_price}
+    return render(request, 'accounts/search.html', context)
 
     ### =======> ///Related to House search/// <======= ###
