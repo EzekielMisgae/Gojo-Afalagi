@@ -49,7 +49,7 @@ class House(models.Model):
         ('Compound', 'Compound'),
         ('Room', 'Room'),
         ('Condominium', 'Condominium'),
-        ('Luxury', 'Luxury')
+        ('Luxury', 'Luxury'),
     )
     title = models.CharField(max_length=255)
     owner = models.CharField(max_length=255)

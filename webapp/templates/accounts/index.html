@@ -1,7 +1,6 @@
 {% extends 'accounts/headerFooter.html' %}
 {% load static %}
 {% block content %}
-
 <div class="row"> <!-- ======= Description section ======= -->
     <div class="col-md">
         <section id="hero" class="d-flex align-items-center">
@@ -97,29 +96,11 @@
                 </section>
             </div>
         </div>
-        <div>
-            <h1 style="margin: 2% 0% 2% 5%; text-align: center;">List of Houses for Rent</h1>
-            <div class="container">
-                <div class="row">
-                    {% for house in houses %}
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem; ">
-                            <img style="width:100%; height:100%;" src="{{ house.image.url }}" alt="House Photo" />
-                            <div class="card-body">
-                                <h5 class="card-title"><a>{{ house.title }}</a></h5>
-                                <p class="card-text">{{ house.bedrooms }} Bed Rooms</p>
-                                <p class="card-text">{{ house.rental_price }} Birr</p>
-                                <a href="{% url 'house_detail' house.id %}">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        {% include 'accounts/search.html' %}
     </div>
 </div>
-
+<br><br>
+<hr>
 <style>
     .btn-get-started {
         font-family: "Poppins", sans-serif;
@@ -140,9 +121,4 @@
         width: 18rem;
     }
 </style>
-</div>
-</div> <!-- End About Section -->
-<br><br>
-<hr>
-
 {% endblock %}

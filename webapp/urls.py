@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from .views import house_list, house_detail, house_create
+from .views import house_detail, house_create, search
 
 
 urlpatterns = [
@@ -21,6 +21,7 @@ urlpatterns = [
     path('<int:pk>/', house_detail, name='house_detail'),
     path('create/', house_create, name='house_create'),
 
+    path('search/', search, name='search'),
     path('compound',views.compound, name='compound'),
     path('apartment',views.apartment, name='apartment'),
     path('room',views.room, name='room'),

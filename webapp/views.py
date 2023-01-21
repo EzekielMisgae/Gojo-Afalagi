@@ -140,7 +140,7 @@ def luxurious(request):
 
 
 
-### =======> Related to House upload/// <======= ###
+### =======> Related to House upload <======= ###
 @login_required(login_url='login')
 def house_list(request):
     houses = House.objects.all()
@@ -166,3 +166,32 @@ def house_create(request):
     return render(request, 'accounts/form.html', context)
 
 ### =======> ///Related to House upload/// <======= ###
+
+
+
+
+### =======> Related to House Search <======= ###
+def search(request):
+    houses = House.objects.all()
+    allhouse = houses.all()
+    cities = House.objects.values_list('city', flat=True).distinct()
+    allcities = cities.all()
+    house_types = House.objects.values_list('house_type', flat=True).distinct()
+    if 'city' in request.GET and request.GET['city'] != "All":
+        city = request.GET['city']
+        if city:
+            houses = houses.filter(city__contains=city)
+    if 'house_type' in request.GET and request.GET['house_type'] != "All":
+        house_type = request.GET['house_type']
+        if house_type:
+            houses = houses.filter(house_type__contains=house_type)
+    if 'min_price' in request.GET:
+        min_price = request.GET['min_price']
+        houses = houses.filter(rental_price__gte=min_price)
+    if 'max_price' in request.GET:
+        max_price = request.GET['max_price']
+        houses = houses.filter(rental_price__lte=max_price)
+    context = {'houses': houses, 'allhouse':allhouse, 'cities':cities, 'allcities':allcities, 'house_types':house_types}
+    return render(request, 'accounts/index.html', context)
+
+    ### =======> ///Related to House search/// <======= ###
