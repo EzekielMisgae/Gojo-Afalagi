@@ -5,21 +5,19 @@ from django import forms
 
 from .models import *
 
+
 class CustomerForm(ModelForm):
 	class Meta:
 		model = Customer
 		fields = '__all__'
 		exclude = ['user']
 
-class BookForm(ModelForm):
-	class Meta:
-		model = Book
-		fields = '__all__'
 
 class CreateUserForm(UserCreationForm):
 	class Meta:
 		model = User
 		fields = ['username', 'email', 'password1', 'password2']
+
 
 class profileUpdate(ModelForm):
     class Meta:
@@ -30,5 +28,11 @@ class profileUpdate(ModelForm):
 class ImageForm(forms.ModelForm):
     """Form for the image model"""
     class Meta:
-        model = Image
+        model = House
         fields = ('title', 'image')
+
+# class ImageSave(forms.ModelForm):
+#     """Form for the image model"""
+#     class Meta:
+#         model = House
+#         fields = ('title', 'image')

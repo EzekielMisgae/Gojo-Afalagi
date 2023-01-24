@@ -25,7 +25,6 @@ pipenv==2022.12.19
 platformdirs==2.6.1
 psycopg2-binary==2.9.5
 pycodestyle==2.10.0
-pymongo==3.12.3
 python-dateutil==2.8.2
 python-decouple==3.6
 pytz==2022.7

@@ -5,4 +5,4 @@ from .models import *
 admin.site.register(Customer)
 admin.site.register(House)
 admin.site.register(Tag)
-admin.site.register(Book)
+admin.site.register(Image)

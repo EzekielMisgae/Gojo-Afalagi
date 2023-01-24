@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
 class Customer(models.Model):
 	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 
@@ -68,7 +67,9 @@ class House(models.Model):
     landlordPhone = models.CharField(max_length=20, null=True)
     houseStatus = models.CharField(
         max_length=100, default='Available', choices=HOUSESTATUS, null=False)
-    image = models.ImageField(upload_to='users/%Y/%m/%d/', blank=True)
+    title = models.CharField(max_length=255, null=True)
+    image = models.ImageField(upload_to='images/Uploads/',
+                            default="images/Uploads/image-placeholder-500x500.jpg", blank=True)
     tags = models.ManyToManyField(Tag)
 
     def __str__(self):
@@ -82,24 +83,6 @@ class House(models.Model):
             url = ''
         print('URL:', url)
         return url
-
-
-class Book(models.Model):
-    STATUS = (
-        ('Pending', 'Pending'),
-        ('Out for delivery', 'Out for delivery'),
-        ('Delivered', 'Delivered')
-    )
-    customer = models.ForeignKey(
-        Customer, null=True, on_delete=models.SET_NULL)
-    house = models.ForeignKey(House, null=True, on_delete=models.SET_NULL)
-    date_created = models.DateTimeField(auto_now_add=True, null=True)
-    status = models.CharField(max_length=200, null=True, choices=STATUS)
-    note = models.CharField(max_length=100, null=True)
-    tags = models.ManyToManyField(Tag)
-
-    def __str__(self):
-        return self.house.housetype
 
 
 class Image(models.Model):

@@ -2,9 +2,43 @@
 {% block content %}
 {% load static %}
 <br><br><br><br>
-<p class="description">Depending on what you like or your new room to look like, choose the available rooms 
-    on the filter and narrow down your search to exactly what you want. Renting a room is 
-    very convenient. You can find rooms in our ountry using GojoAfalagi™...</p>
-<h1>Rooms are listed here</h1>
+<div style="margin-left: 9%; margin-right: 9%;">
+    <h3>Rooms</h3>
+    <p style="text-align: justify;">Depending on what you like or your new room to look like, choose the available rooms
+        on the filter and narrow down your search to exactly what you want. Renting a room is
+        very convenient. You can find rooms in our ountry using GojoAfalagi™...</p>
+    <br><br>
+    <h4>Room list</h4>
 
+    <br><br>
+    {% if list %}
+    <table>
+        <tr>
+            <th>area</th>
+            <th>kebele</th>
+            <th>title</th>
+            <th>price</th>
+            <th>landlordName</th>
+        </tr>
+        <tr>
+            {% for st in list %}
+            <td>{{st.area}}</td>
+            <td>{{st.kebele}}</td>
+            <td>{{st.title}}</td>
+            <td>{{st.price}}</td>
+            <td>{{st.landlordName}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <h4>No Data</h4>
+    {% endif %}
+</div>
+<br><br>
+<style>
+    th,
+    td {
+        border: 1px black solid;
+    }
+</style>
 {% endblock %}

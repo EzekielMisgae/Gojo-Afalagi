@@ -5,6 +5,7 @@ from . import views
 
 
 urlpatterns = [
+
     path('', views.landingPage, name='landingPage'),
     path('login',views.loginPage, name='login'),
     path('register',views.registerPage, name='register'),
@@ -16,7 +17,7 @@ urlpatterns = [
     path('aboutme',views.aboutme, name='aboutme'),
     path('profile',views.profile, name='profile'),
 
-    path('rentals',views.image_upload_view, name='rentals'),
+    path('rentals',views.rentals, name='rentals'),
 
     path('house',views.house, name='house'),
     path('apartment',views.apartment, name='apartment'),
@@ -24,9 +25,9 @@ urlpatterns = [
     path('condominium',views.condominium, name='condominium'),
     path('luxurious',views.luxurious, name='luxurious'),
 
-    path('create_book/<str:id>/', views.createBook, name="create_book"),
-    path('update_book/<str:id>/', views.updateBook, name="update_book"),
-    path('delete_book/<str:id>/', views.deleteBook, name="delete_book"),
+    # path('create_book/<str:id>/', views.createBook, name="create_book"),
+    # path('update_book/<str:id>/', views.updateBook, name="update_book"),
+    # path('delete_book/<str:id>/', views.deleteBook, name="delete_book"),
 ]
 
 if settings.DEBUG:
