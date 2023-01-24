@@ -182,6 +182,7 @@ def house_create(request):
 
 @login_required(login_url='login')
 def search(request):
+    cities = House.objects.values_list('city', flat=True).distinct()
     houses = House.objects.all()
     house_types = House.objects.values_list('house_type', flat=True).distinct()
     if 'city' in request.GET and request.GET['city'] != "All":
@@ -202,7 +203,7 @@ def search(request):
         max_price = request.GET.get('max_price')
     houses = houses.filter(rental_price__gte=min_price,
                            rental_price__lte=max_price)
-    context = {'houses': houses, 'housess': houses, 'house_types': house_types,
+    context = {'houses': houses, 'cities':cities, 'house_types': house_types,
                'min_price': min_price, 'max_price': max_price}
     return render(request, 'accounts/search.html', context)
 
