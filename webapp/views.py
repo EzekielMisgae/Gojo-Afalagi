@@ -106,6 +106,16 @@ def aboutme(request):
     context = {}
     return render(request, 'accounts/aboutme.html', context)
 
+@login_required
+def aboutt(request):
+    context = {}
+    return render(request, 'accounts/aboutt.html', context)
+
+@login_required
+def aboutmee(request):
+    context = {}
+    return render(request, 'accounts/aboutmee.html', context)
+
 ### =======> ///Related to Customer and About/// <======== ###
 
 
@@ -169,7 +179,7 @@ def house_create(request):
         if form.is_valid():
             form.save()
 
-            return redirect('house_list')
+            return redirect('search')
     else:
         form = HouseForm()
         context = {'form': form}

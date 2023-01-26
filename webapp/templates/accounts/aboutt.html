@@ -1,0 +1,213 @@
+{% include 'accounts/links.html' %}
+{% load static %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+	<div class="container d-flex align-items-center justify-content-between">
+
+		<h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
+		<nav id="navbar" class="navbar">
+			<ul>
+				<li><a class="nav-link scrollto active" href="{% url 'landingPage' %}">Home</a></li>
+				<li class="dropdown"><a><span>Rentals</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="{% url 'login' %}">Apartment</a></li>
+						<li><a href="{% url 'login' %}">House</a></li>
+						<li><a href="{% url 'login' %}">Rooms</a></li>
+						<li><a href="{% url 'login' %}">Condominium</a></li>
+						<li><a href="{% url 'login' %}">Luxurious</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link scrollto o" href="{% url 'login' %}">Profile</a></li>
+				<li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="">About Gojo-Afalagi</a></li>
+						<li><a href="{% url 'aboutme' %}">About me</a></li>
+					</ul>
+				</li>
+				<li><a class="getstarted scrollto" href="{% url 'login' %}">Sign-out</a></li>
+			</ul>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+		</nav><!-- .navbar -->
+	</div>
+</header><!-- End Header -->
+
+<body style="margin-top: 2%;">
+	<div class="row">
+		<div class="col-md">
+			<section id="hero" class="d-flex align-items-center">
+				<div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+					<br>
+					<img style="width:80%; height:80%; margin-left: 5%; padding-left: 10%;" src="{% static 'img/background.png' %}"
+						alt="AI generated image of a girl searching a house.">
+					<section style="text-align: left;" id="about" class="about">
+						<div class="container" data-aos="fade-up">
+							<div style="margin-left: 8%; margin-right: 8%;" class="section-title">
+								<h4 style="text-align: center">Introduction</h4>
+
+								<p>GoJo_Afalagi is a web application that aims to streamline the process of finding and
+									renting a home. By
+									eliminating brokers from the equation, GoJo_Afalagi allows renters to directly
+									connect with house owners and
+									search for available properties in their area. The application is built with a
+									combination of front-end
+									technologies such as HTML, CSS, and JavaScript, and a backend framework written in
+									Python and Django.
+								</p>
+								<h4 style="text-align: center">How it Works</h4>
+
+								<p>Renters can easily search for available homes on GoJo_Afalagi by specifying their
+									desired location, budget,
+									and other relevant criteria. The application then returns a list of homes that match
+									the search criteria,
+									complete with photos, descriptions, and contact information for the house owner.
+									Renters can directly contact the
+									house owner to inquire about the property or schedule a viewing.</p>
+
+								<p>On the other hand, house owners can use GoJo_Afalagi to advertise their available
+									homes for rent. They can
+									create a listing with photos, descriptions, and other relevant details, and make it
+									visible to renters
+									searching for homes in the area. By using GoJo_Afalagi, house owners can reach a
+									wider audience of potential renters
+									and save time and money on broker fees.</p>
+
+								<h4 style="text-align: center">Benefits for Renters</h4>
+
+								<p>GoJo_Afalagi provides several benefits for renters. By eliminating brokers from the
+									equation, renters can
+									directly interact with house owners and negotiate rental terms without
+									intermediaries. This can lead to more
+									favorable rental agreements and reduce the risk of misunderstandings or disputes. In
+									addition, GoJo_Afalagi
+									allows renters to search for available homes in their desired location and budget,
+									making it easier to find
+									a home that meets their needs and preferences.</p>
+
+								<h4 style="text-align: center">Benefits for House Owners</h4>
+
+								<p>GoJo_Afalagi also offers several benefits for house owners. By advertising their
+									available homes on the
+									platform, house owners can reach a wider audience of potential renters and save
+									money on broker fees. In
+									addition, GoJo_Afalagi allows house owners to directly interact with renters, making
+									it easier to screen
+									potential tenants and negotiate rental terms. By using GoJo_Afalagi, house owners
+									can streamline the process
+									of renting out their homes and save time and resources in the process.</p>
+
+								<h4 style="text-align: center">Conclusion</h4>
+
+								<p>GoJo_Afalagi is a simple and effective web application that makes it easier for
+									renters to find homes and for
+									house owners to advertise their available properties. By eliminating brokers from
+									the equation, GoJo_Afalagi
+									allows renters and house owners to directly interact and negotiate rental terms,
+									leading to more favorable
+									agreements and a better experience for all parties involved.</p>
+							</div>
+						</div>
+					</section>
+				</div>
+			</section>
+		</div>
+	</div>
+</body>
+
+<!-- ==== Footer start ==== -->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h3>GoJo Afalagi</h3>
+					<p>
+						Catholic <br>
+						Bahirdar, Kebele 13<br>
+						Ethiopia <br><br>
+						<strong>Phone:</strong> +251975325354<br>
+						<strong>Email:</strong> ezkielmisgae@gmailcom<br>
+					</p>
+				</div>
+				<div class="col-lg-2 col-md-6 footer-links">
+					<h4>Useful Links</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'landingPage' %}">Home</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Rentals</a>
+						</li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Profile</a>
+						</li>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-md-6 footer-links">
+					<h4>Our Services</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room
+								Rentals</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-md-6 footer-newsletter">
+					<h4>Special Thank</h4>
+					<p>For the whole AlX and Holberton team for creating this course for free.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container d-md-flex py-4">
+		<div class="me-md-auto text-center text-md-start">
+			<div class="copyright">
+				&copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
+			</div>
+			<div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
+			</div>
+		</div>
+		<div class="social-links text-center text-md-right pt-3 pt-md-0">
+			<a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i class="bx bxl-twitter"></i></a>
+			<a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i class="bx bxl-facebook"></i></a>
+			<a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i class="bx bxl-instagram"></i></a>
+			<a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+		</div>
+	</div>
+</footer>
+
+<style>
+	body {
+		background-color: #F8F8F8 !important;
+	}
+
+	#profile-wrapper {
+		text-align: center;
+	}
+
+	#profile-pic {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	ul {
+		padding: 0;
+		list-style-type: none;
+	}
+
+
+	.social-links ul,
+	li {
+		list-style-type: none;
+		display: inline-block;
+	}
+
+	.social {
+		width: 20px;
+		height: 20px;
+	}
+</style>

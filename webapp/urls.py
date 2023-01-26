@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from .views import house_detail, house_create, search
+from .views import house_detail, house_create, search, house_list
 from . import decorators
 
 
@@ -17,12 +17,15 @@ urlpatterns = [
     path('unauthorized',decorators.unauthorized, name='unauthorized'),
 
     path('about',views.about, name='about'),
-    path('aboutme',views.aboutme, name='aboutme'),
+    path('aboutt',views.aboutt, name='aboutt'),
+    path('aboutmee',views.aboutmee, name='aboutmee'),
     path('profile',views.profile, name='profile'),
+    path('aboutme',views.aboutme, name='aboutme'),
 
     path('<int:pk>/', house_detail, name='house_detail'),
     path('create/', house_create, name='house_create'),
-
+    path('house_list/', house_list, name='list'),
+    
     path('search/', search, name='search'),
     path('compound',views.compound, name='compound'),
     path('apartment',views.apartment, name='apartment'),

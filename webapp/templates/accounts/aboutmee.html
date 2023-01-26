@@ -1,0 +1,202 @@
+{% include 'accounts/links.html' %}
+{% load static %}
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+	<div class="container d-flex align-items-center justify-content-between">
+
+		<h1 class="logo"><a href="{% url 'landingPage' %}">Gojo Afalagi</a></h1>
+		<nav id="navbar" class="navbar">
+			<ul>
+				<li><a class="nav-link scrollto active" href="{% url 'landingPage' %}">Home</a></li>
+				<li class="dropdown"><a><span>Rentals</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="{% url 'login' %}">Apartment</a></li>
+						<li><a href="{% url 'login' %}">House</a></li>
+						<li><a href="{% url 'login' %}">Rooms</a></li>
+						<li><a href="{% url 'login' %}">Condominium</a></li>
+						<li><a href="{% url 'login' %}">Luxurious</a></li>
+					</ul>
+				</li>
+				<li><a class="nav-link scrollto o" href="{% url 'login' %}">Profile</a></li>
+				<li class="dropdown"><a><span>About</span> <i class="bi bi-chevron-down"></i></a>
+					<ul>
+						<li><a href="{% url 'about' %}">About Gojo-Afalagi</a></li>
+						<li><a href="">About me</a></li>
+					</ul>
+				</li>
+				<li><a class="getstarted scrollto" href="{% url 'login' %}">Sign-out</a></li>
+			</ul>
+			<i class="bi bi-list mobile-nav-toggle"></i>
+		</nav><!-- .navbar -->
+	</div>
+</header><!-- End Header -->
+
+<body style="margin-top: 10%;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="card card-body h-100  border-info" id="profile-wrapper">
+					<img id="profile-pic" src="{% static 'img/aa.jpg' %}">
+					<hr>
+					<h4>Hi I'm Ezekiel!</h4>
+					<p>I love coding. I’m a full-stack developer and student at Alx.</p>
+				</div>
+			</div>
+
+			<div class="col-md-9">
+				<div class="card card-body h-100  border-info">
+					<h4>Let me introduce you myself</h4>
+					<hr>
+					<p>Hi! My name is Ezekiel and I am a beginner software engineer with a passion for back-end
+						development. I am currently pursuing a degree in Software Engineering at Bahirdar Institute of
+						Technology and am excited to dive into the world of software engineering.</p>
+
+					<p>I am currently enrolled in the Alx Africa or Holberton School program to further my knowledge and
+						skills in full-stack development. I am particularly interested in learning about back-end
+						development which includes databases, web servers, and API development.</p>
+
+					<p>In my free time, I enjoy tinkering with new technologies and building small projects to expand my
+						knowledge and capabilities. I am a fast learner and always looking for opportunities to improve
+						my skills and contribute to the tech community.</p>
+
+					<p>I am eager to start my career as a software engineer and use my skills to create innovative
+						solutions for real-world problems. I am confident that my education and passion for back-end
+						development will make me a valuable asset to any team.</p>
+
+						<ul class="social-links">
+							<li><img class="social" src="{% static 'img/github.png' %}" href="https://github.com/EzekielMisgae"></li>
+							<li><img class="social" src="{% static 'img/linkedin.png' %}"href="https://www.linkedin.com/in/ezekielmisgae"></li>
+							<li><img class="social" src="{% static 'img/twitter.png' %}" href="https://twitter.com/EzekielMisganaw"></li>
+						</ul>
+
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card card-body h-100">
+					<h5>What I Know</h5>
+					<hr>
+					<p>My skills include a strong foundation in programming languages such as Python and C, as well as
+						an understanding of basic database management and front-end development.</p>
+					<p>I am excited to continue my learning journey and take on new challenges in the field of software
+						engineering.</p>
+
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card card-body h-100">
+					<h5>My Goals</h5>
+					<hr>
+					<p>Complete a small project: such as building a simple application or creating a website. This will help me to practice my
+						skills and apply what I have learned.</p>
+					<p>Learn about version control: such as Git and understand how to use them to manage code changes.</p>
+					<p>Understand data structures and algorithms: such as arrays, lists, and trees, and understand how to implement them in code.</p>
+
+				</div>
+			</div>
+			<a href="https://github.com/EzekielMisgae">GitHub Repo</a>
+		</div>
+		<br>
+	</div>
+</body>
+<!-- ==== Footer start ==== -->
+<footer id="footer">
+	<div class="footer-top">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-3 col-md-6 footer-contact">
+					<h3>GoJo Afalagi</h3>
+					<p>
+						Catholic <br>
+						Bahirdar, Kebele 13<br>
+						Ethiopia <br><br>
+						<strong>Phone:</strong> +251975325354<br>
+						<strong>Email:</strong> ezkielmisgae@gmailcom<br>
+					</p>
+				</div>
+				<div class="col-lg-2 col-md-6 footer-links">
+					<h4>Useful Links</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'landingPage' %}">Home</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Rentals</a>
+						</li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Profile</a>
+						</li>
+						</li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-md-6 footer-links">
+					<h4>Our Services</h4>
+					<ul>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Apartment
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">House
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Condo
+								Rentals</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="{% url 'login' %}">Room
+								Rentals</a></li>
+					</ul>
+				</div>
+				<div class="col-lg-4 col-md-6 footer-newsletter">
+					<h4>Special Thank</h4>
+					<p>For the whole AlX and Holberton team for creating this course for free.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container d-md-flex py-4">
+		<div class="me-md-auto text-center text-md-start">
+			<div class="copyright">
+				&copy; Copyright <strong><span>Gojo Afalagi</span></strong>. All Rights Reserved
+			</div>
+			<div class="credits">Designed by <a href="https://ezekielmisgae.tech/">Ezekiel Alene</a>
+			</div>
+		</div>
+		<div class="social-links text-center text-md-right pt-3 pt-md-0">
+			<a href="https://www.twitter.com/ezekielmisganaw/" class="twitter"><i class="bx bxl-twitter"></i></a>
+			<a href="https://www.facebook.com/ezekiel.misganaw/" class="facebook"><i class="bx bxl-facebook"></i></a>
+			<a href="https://www.instagram.com/ezkielmisgae/" class="instagram"><i class="bx bxl-instagram"></i></a>
+			<a href="https://www.linkedin.com/ezekielmisganaw/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+		</div>
+	</div>
+</footer>
+
+<style>
+	body {
+		background-color: #F8F8F8 !important;
+	}
+
+	#profile-wrapper {
+		text-align: center;
+	}
+
+	#profile-pic {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	ul {
+		padding: 0;
+		list-style-type: none;
+	}
+
+
+	.social-links ul,
+	li {
+		list-style-type: none;
+		display: inline-block;
+	}
+
+	.social {
+		width: 20px;
+		height: 20px;
+	}
+</style>
