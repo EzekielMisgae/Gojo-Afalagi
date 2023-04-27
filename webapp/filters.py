@@ -1,7 +1,7 @@
+#Non functional
 import django_filters
 from django_filters import DateFilter, CharFilter
 from .models import *
-
 
 class BookFilter(django_filters.FilterSet):
     start_date = DateFilter(field_name="date_created", lookup_expr='gte')
