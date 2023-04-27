@@ -3,31 +3,6 @@
 
 
 <br><br><br><br>
-<!-- <div class="row">
-	<div class="col-md-3">
-		<div class="card card-body">
-			<a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a>
-			<hr>
-			<h3 style="text-align: center">Account Settings</h3>
-			<hr>
-		
-		</div>
-	</div>
-	<div class="col-md-9">
-		<div class="card card-body">
-			
-			<form method="POST" action="" enctype="multipart/form-data">
-				{% csrf_token %}
-				{{form.as_p}}
-		
-			<input class="btn btn-primary" type="submit" name="Update Information">
-			</form>
-		</div>
-	</div>
-</div>
- -->
-
-
 <div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
         <div class="col-md-3 border-right">
@@ -56,32 +31,26 @@
 
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Full Name</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your name" value=""/> -->
                            
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Phone Number</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your Phone Number" value=""> -->
                             {{form.phone}}
                         </div>
                         <div class="col-md-12"><label class="labels">Kebele ID</label>
-                            <!-- <input type="text" class="form-control" placeholder="Enter your Kebele ID" value=""> -->
                             {{form.kebeleID}}
                         </div>
                         <div class="col-md-12"><label class="labels">Job</label>
-                            <!-- <input type="text" class="form-control" placeholder="Please enter your Job" value=""> -->
                             {{form.job}}
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6"><label class="labels">City</label>
-                            <!-- <input type="text" class="form-control" placeholder="City" value=""> -->
                             {{form.city}}
                         </div>
                     </div>
                 <div class="mt-5 text-center">
-                    <!-- <button class="btn btn-primary profile-button" type="button">Save Profile</button> -->
                     <input class="btn btn-primary profile-button"  type="submit" value="Save Profile">
                 </div>
                 </form>
