@@ -1,3 +1,4 @@
+#webapp as an app
 from django.apps import AppConfig
 
 class WebappConfig(AppConfig):
