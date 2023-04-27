@@ -13,10 +13,7 @@ from .forms import BookForm, CreateUserForm, CustomerForm, ImageForm, profileUpd
 from .filters import BookFilter
 from .decorators import unauthenticated_user, allowed_users, landlord_only
 
-
-
 ### =======> Related Login and Registration Pages<======== ###
-
 @unauthenticated_user
 def registerPage(request):
 	form = CreateUserForm()
@@ -36,22 +33,6 @@ def registerPage(request):
 			return redirect('login')
 	context = {'form':form}
 	return render(request, 'accounts/first/register.html', context)
-
-
-# @unauthenticated_user
-# def registerPage(request):
-#     form = CreateUserForm()
-#     if request.method == 'POST':
-#         form = CreateUserForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-
-#             messages.success(request, 'Account was created for ' + username)
-
-#             return redirect('login')
-#     context = {'form': form}
-#     return render(request, 'accounts/first/register.html', context)
 
 
 @unauthenticated_user  # if users logged in already & try to access it will redirect them
