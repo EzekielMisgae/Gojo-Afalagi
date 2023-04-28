@@ -1,0 +1,114 @@
+{% extends 'accounts/headerFooter.html' %}
+{% block content %}
+
+{% load static %}
+<div style="margin: 0% -20% 0% 0%; display: block;">
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px"
+                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <span class="font-weight-bold">{{user.username}}</span>
+                    <span class="text-black-50">{{user.email}}</span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile update Settings</h4>
+                    </div>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label>Full Name</label>
+                                {{form.fullName}}
+                            </div>
+                            <div class="col-md-12"><label>Phone Number</label>
+                                {{form.phone}}
+                            </div>
+                            <div class="col-md-12"><label>Kebele ID</label>
+                                {{form.kebeleID}}
+                            </div>
+                            <div class="col-md-12"><label>Job</label>
+                                {{form.job}}
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label>City</label>
+                                {{form.city}}
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <input class="btn btn-primary profile-button" type="submit" value="Save Profile">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+    //We start indexing at one because CSRF_token is considered and input field 
+    */
+    //Query All input fields
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Enter Phone Number';
+    form_fields[3].placeholder = 'Kebele ID';
+    form_fields[4].placeholder = 'Job...';
+    form_fields[5].placeholder = 'City';
+    for (var field in form_fields) {
+
+        form_fields[field].className += ' form-control'
+    }
+</script>
+
+
+<style>
+    .profile-pic {
+        max-width: 200px;
+        max-height: 200px;
+        margin: 0 auto;
+        border-radius: 50%;
+    }
+
+
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #BA68C8
+    }
+
+    .profile-button {
+        background: rgb(99, 39, 120);
+        box-shadow: none;
+        border: none
+    }
+
+    .profile-button:hover {
+        background: #682773
+    }
+
+    .profile-button:focus {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .profile-button:active {
+        background: #682773;
+        box-shadow: none
+    }
+
+    .back:hover {
+        color: #682773;
+        cursor: pointer
+    }
+
+    .labels {
+        font-size: 11px
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'accounts/headerFooter.html' %}
+{% load static %}
+{% block content %}
+<div class="cont">
+
+    <h1>{{ house.title }}</h1>
+    <div class="ruow">
+        <img src="{{ house.image.url }}" alt="{{ house.title }}">
+        <p><b>Owners Name: </b>{{ house.owner }}</p>
+        <p><b>City: </b>{{ house.city }}</p>
+        <p><b>House type: </b>{{ house.house_type }}</p>
+        <p>{{ house.bedrooms }} <b>bedrooms</b></p>
+        <p>{{ house.rental_price }}<b> per month</b></p>
+        <p><b>Description</b>{{ house.description }}</p>
+        <p><b>Uploaded on: </b>{{ house.upload_date }}</p>
+    </div>
+</div>
+
+
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    .ruow {
+        text-align: left;
+        margin-left: 30%;
+        align-items: center;
+        justify-content: left;
+    }
+
+    .cont {
+        text-align: center;
+        margin-top: 6%;
+    }
+
+    img {
+        width: 60%;
+    }
+
+    .card {
+        margin-right: 20px;
+        width: 18rem;
+    }
+</style>
+{% endblock %}
